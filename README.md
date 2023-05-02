@@ -1,6 +1,6 @@
 # SAFEMAC UI Integration
-### site requisitos
-https://gabrielppierre.github.io/requirements-documentation/
+### requirements site
+https://gabrielppierre.github.io/requirements_documentation/
 
 The safemac-ui-integration repository is dedicated to providing an easy-to-use and intuitive user interface for the SAFEMAC system. This interface will help users interact with various components of the SAFEMAC system, including camera calibration, object and person detection, and motion analysis.
 
