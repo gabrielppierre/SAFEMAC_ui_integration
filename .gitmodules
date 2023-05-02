@@ -4,3 +4,6 @@
 [submodule "requirements-documentation"]
 	path = requirements-documentation
 	url = https://github.com/gabrielppierre/requirements-documentation.git
+[submodule "camera-calibration-correction"]
+	path = camera-calibration-correction
+	url = https://github.com/gabrielppierre/camera-calibration-correction.git
