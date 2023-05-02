@@ -1,0 +1,3 @@
+[submodule "automatic_calibration"]
+	path = automatic_calibration
+	url = https://github.com/gabrielppierre/automatic_calibration.git
