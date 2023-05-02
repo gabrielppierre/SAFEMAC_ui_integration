@@ -10,3 +10,9 @@
 [submodule "camera_calibration_correction"]
 	path = camera_calibration_correction
 	url = https://github.com/gabrielppierre/camera_calibration_correction.git
+[submodule "object_person_detection"]
+	path = object_person_detection
+	url = https://github.com/gabrielppierre/object_person_detection.git
+[submodule "requirements_documentation"]
+	path = requirements_documentation
+	url = https://github.com/gabrielppierre/requirements_documentation.git
