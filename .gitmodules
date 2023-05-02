@@ -7,3 +7,6 @@
 [submodule "camera-calibration-correction"]
 	path = camera-calibration-correction
 	url = https://github.com/gabrielppierre/camera-calibration-correction.git
+[submodule "camera_calibration_correction"]
+	path = camera_calibration_correction
+	url = https://github.com/gabrielppierre/camera_calibration_correction.git

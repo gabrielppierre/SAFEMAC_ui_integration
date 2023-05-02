@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
-from  import calibrate_and_save_camera
-from view_calibrated import view_calibrated_cameras
-from view_undistorted import view_undistorted_camera, view_undistorted_live
+from camera_calibration_correction.calibrate_camera import calibrate_and_save_camera
+from camera_calibration_correction.view_calibrated import view_calibrated_cameras
+from camera_calibration_correction.view_undistorted import view_undistorted_camera, view_undistorted_live
 
 width = 800
 height = 500
