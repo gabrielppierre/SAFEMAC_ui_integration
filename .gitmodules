@@ -16,3 +16,6 @@
 [submodule "requirements_documentation"]
 	path = requirements_documentation
 	url = https://github.com/gabrielppierre/requirements_documentation.git
+[submodule "motion_analysis_event_recording"]
+	path = motion_analysis_event_recording
+	url = https://github.com/gabrielppierre/motion_analysis_event_recording.git
