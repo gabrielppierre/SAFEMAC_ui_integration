@@ -5,6 +5,7 @@ from datetime import datetime
 import cv2
 import numpy as np
 import os
+from single6dofPose.detect import detect
 
 class CameraWindow(QMainWindow):
     def __init__(self, cap):
@@ -15,7 +16,7 @@ class CameraWindow(QMainWindow):
         self.cap = cap
         self.update_timer = QTimer()
         self.update_timer.timeout.connect(self.update_frame)
-        self.update_timer.start(1)  #intervalo de atualização em ms
+        self.update_timer.start(1)
 
     def update_frame(self):
         ret, frame = self.cap.read()
@@ -44,7 +45,7 @@ class CameraManager:
     @staticmethod
     def detect(img):
         #este metodo atualmente retorna um ponto no centro da imagem
-        #futuramente, implementar um detector de pontos reais aqui
+        #futuramente, implementar o detector do single6dofpose aqui
         height, width, _ = img.shape
         return [(width // 2, height // 2)]
 

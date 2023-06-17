@@ -1,3 +1,10 @@
 PySide6
 opencv-python
 numpy
+torch
+PIL
+darknet
+torchvision
+vispy
+plyfile
+scipy
