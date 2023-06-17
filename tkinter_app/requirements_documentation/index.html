@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Requisitos - SAFEMAC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Alerta e Prevenção de Acidentes com Maquinário de Construção</h1>
+    </header>
+    <div class="container">
+        <h2>Objetivo</h2>
+        <p>Salvaguardar os trabalhadores em canteiros de obras, minimizando riscos associados à operação de maquinário pesado, identificando potenciais colisões com indivíduos próximos em tempo real e transmitindo essas informações ao operador da máquina.</p>
+        <h2>Requisitos Funcionais</h2>
+        <ul>
+            <li>O sistema deve rastrear a área circundante ao maquinário utilizando câmeras dispostas em todas as faces do veículo (frontal, lateral direita, lateral esquerda e traseira).</li>
+            <li>A posição tridimensional (3D) dos trabalhadores deve ser estimada por uma câmera monocular instalada em cada face do maquinário.</li>
+            <li>A detecção de potenciais colisões com trabalhadores na área de atuação do maquinário pesado deve ocorrer em tempo real.</li>
+            <li>O operador deve ser informado, em tempo real, sobre a possibilidade de contato entre trabalhadores e o maquinário durante sua operação e movimentação.</li>
+            <li>A presença de trabalhadores em um raio mínimo de 5, 8 e 12 metros em torno do maquinário deve ser identificável em todas as direções.</li>
+            <li>Alertas visuais e sonoros no painel de controle devem ser acionados quando uma possível colisão com trabalhadores próximos for identificada.</li>
+            <li>A implementação do sistema em diferentes tipos e tamanhos de maquinário pesado, como escavadeiras, guindastes e tratores deve ser possível.</li>
+        </ul>
+        <h2>Restrições</h2>
+        <ul>
+            <li>O sistema deve ser robusto e eficiente às condições adversas comuns em canteiros de obras, como vibração, poeira, umidade e oclusão.</li>
+            <li>Modularização é essencial, garantindo manutenção simplificada.</li>
+        </ul>
+        <h2>Suposições</h2>
+        <ul>
+            <li>Quatro câmeras serão instaladas em todos os lados do maquinário.</li>
+            <li>A câmera monocular em cada face do maquinário será capaz de estimar as posições tridimensionais (3D) dos trabalhadores.</li>
+            <li>Informações em tempo real serão fornecidas ao operador para evitar possíveis colisões com trabalhadores próximos.</li>
+            <li>A validação do sistema ocorrerá em ambiente controlado, simulando condições semelhantes às encontradas em construções reais.</li>
+            <li>O sistema será capaz de detectar e notificar o operador sobre possíveis falhas no seu funcionamento.</li>
+        </ul>
+    </div>
+</body>
+</html>
