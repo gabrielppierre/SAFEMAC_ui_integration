@@ -10,7 +10,6 @@ from PyQt5.QtCore import QTimer
 from modules.system_infos import get_cpu_usage, get_ram_usage, get_temperature, get_fps
 
 bh = 50
-
 #importar a interface do usuário e os módulos e widgets
 from modules import *
 from widgets import *
@@ -20,7 +19,8 @@ widgets = None
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-
+        self.setMinimumSize(1400, 800)
+        
         #definir os widgets como globais
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)

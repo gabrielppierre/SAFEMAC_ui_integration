@@ -1,6 +1,5 @@
 from main import *
 
-# WITH ACCESS TO MAIN WINDOW WIDGETS
 class AppFunctions(MainWindow):
     def setThemeHack(self):
         Settings.BTN_LEFT_BOX_COLOR = "background-color: #495474;"
@@ -10,7 +9,6 @@ class AppFunctions(MainWindow):
         background-color: #566388;
         """
 
-        # SET MANUAL STYLES
         self.ui.lineEdit.setStyleSheet("background-color: #6272a4;")
         self.ui.pushButton.setStyleSheet("background-color: #6272a4;")
         self.ui.plainTextEdit.setStyleSheet("background-color: #6272a4;")

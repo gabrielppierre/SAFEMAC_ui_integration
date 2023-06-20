@@ -17,7 +17,6 @@ def get_temperature():
             return sensor.Value
     return 0
 
-
 def get_fps(frame_count, start_time):
     end_time = time.time()
     elapsed_time = end_time - start_time

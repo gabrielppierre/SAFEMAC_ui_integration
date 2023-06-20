@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>940</width>
+    <width>992</width>
     <height>698</height>
    </rect>
   </property>
@@ -39,7 +39,7 @@
 Tooltip */
 QToolTip {
 	color: #ffffff;
-	background-color: rgba(33, 37, 43, 180);
+	background-color: yellow;
 	border: 1px solid rgb(44, 49, 58);
 	background-image: none;
 	background-position: left center;
@@ -99,7 +99,7 @@ Left Menu */
 	padding-left: 44px;
 }
 #bottomMenu .QPushButton:hover {
-	background-color: yellow;
+	background-color: #000099;
 }
 #bottomMenu .QPushButton:pressed {	
 	background-color: #0935B0;
@@ -416,7 +416,7 @@ QRadioButton::indicator:checked {
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 ComboBox */
 QComboBox{
-	background-color: rgb(27, 29, 35);
+	background-color: red;
 	border-radius: 5px;
 	border: 2px solid rgb(33, 37, 43);
 	padding: 5px;
@@ -440,7 +440,7 @@ QComboBox::drop-down {
  }
 QComboBox QAbstractItemView {
 	color: #ffff00;	
-	background-color: rgb(33, 37, 43);
+	background-color: red;
 	padding: 10px;
 	selection-background-color: rgb(39, 44, 54);
 }
@@ -516,7 +516,7 @@ Button */
 #pagesContainer QPushButton {
 	border: 2px solid rgb(52, 59, 72);
 	border-radius: 5px;	
-	background-color: rgb(52, 59, 72);
+	background-color: yellow;
 }
 #pagesContainer QPushButton:hover {
 	background-color: rgb(57, 65, 80);
@@ -1799,7 +1799,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <enum>QFrame::NoFrame</enum>
                      </property>
                      <property name="currentIndex">
-                      <number>2</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2407,29 +2407,58 @@ QPushButton::hover{
                        </item>
                       </layout>
                      </widget>
-                     <widget class="QWidget" name="widgets">
+                     <widget class="QWidget" name="saved_videos">
                       <property name="styleSheet">
                        <string notr="true">b</string>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout">
                        <property name="spacing">
-                        <number>10</number>
+                        <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>10</number>
+                        <number>0</number>
                        </property>
                        <property name="topMargin">
-                        <number>10</number>
+                        <number>0</number>
                        </property>
                        <property name="rightMargin">
-                        <number>10</number>
+                        <number>0</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>10</number>
+                        <number>0</number>
                        </property>
+                       <item>
+                        <widget class="QFrame" name="frame_3">
+                         <property name="frameShape">
+                          <enum>QFrame::NoFrame</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_16">
+                          <item>
+                           <widget class="QTabWidget" name="tabWidget">
+                            <property name="currentIndex">
+                             <number>0</number>
+                            </property>
+                            <widget class="QWidget" name="cameras_tab">
+                             <attribute name="title">
+                              <string>Câmeras</string>
+                             </attribute>
+                            </widget>
+                            <widget class="QWidget" name="bumps_tab">
+                             <attribute name="title">
+                              <string>Colisões</string>
+                             </attribute>
+                            </widget>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
                       </layout>
                      </widget>
-                     <widget class="QWidget" name="new_page">
+                     <widget class="QWidget" name="cameras">
                       <layout class="QVBoxLayout" name="verticalLayout_20">
                        <item>
                         <widget class="QFrame" name="frame_12">
