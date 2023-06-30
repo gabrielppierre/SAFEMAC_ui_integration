@@ -1,8 +1,6 @@
 import psutil
-import wmi
 import time
-
-w = wmi.WMI(namespace="root\OpenHardwareMonitor")
+import subprocess
 
 def get_cpu_usage():
     return psutil.cpu_percent(interval=1)
@@ -10,12 +8,16 @@ def get_cpu_usage():
 def get_ram_usage():
     return psutil.virtual_memory().percent
 
+
 def get_temperature():
-    temperature_infos = w.Sensor()
-    for sensor in temperature_infos:
-        if sensor.SensorType == u'Temperature':
-            return sensor.Value
-    return 0
+    try:
+        output = subprocess.check_output(['WMIC', 'CPU', 'GET', 'Temperature'])
+        output = output.decode('utf-8').strip().split('\n')
+        temperature = output[1]
+        temperature = int(temperature) / 10.0  # Convert to Celsius
+        return temperature
+    except (subprocess.CalledProcessError, IndexError):
+        return None
 
 def get_fps(frame_count, start_time):
     end_time = time.time()
@@ -30,11 +32,6 @@ def print_system_info(frame_count, start_time):
     ram = get_ram_usage()
     temp = get_temperature() or 0
     fps = get_fps(frame_count, start_time)  
-
-    print(f"CPU usage: {cpu:.2f}%")  
-    print(f"RAM usage: {ram:.2f}%")  
-    print(f"Temperature: {temp:.2f} C")  
-    print(f"FPS: {fps:.2f}")  
 
 
 frame_count = 100  

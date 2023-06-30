@@ -2,22 +2,25 @@ import sys
 import os
 import platform
 from modules.camera_manager import CameraManager
-from modules.ui_main import Ui_MainWindow
 import time
 import cv2
 from PyQt5.QtCore import QTimer
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QVBoxLayout
+from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtCore import Qt
 
-from modules.system_infos import get_cpu_usage, get_ram_usage, get_temperature, get_fps
+from modules.system_infos import get_cpu_usage, get_ram_usage, get_fps #,get_temperature 
 
 bh = 50
 #importar a interface do usuário e os módulos e widgets
 from modules import *
 from widgets import *
-os.environ["QT_FONT_DPI"] = "96" #corrigir problema para alta DPI e escala acima de 100%
+os.environ["QT_FONT_DPI"] = "100" #corrigir problema para alta DPI e escala acima de 100%
 widgets = None
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
+
         super(MainWindow, self).__init__()
         self.setMinimumSize(1400, 800)
         
@@ -34,8 +37,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #inicia o timer
         self.timer.start(1000)
 
-        self.camera_manager = CameraManager([widgets.lb_camera_7, widgets.lb_camera_8, widgets.lb_camera_9, 
-                                             widgets.lb_camera_10, widgets.lb_camera_11, widgets.lb_camera_12], widgets.frame_14)
+        self.camera_manager = CameraManager([widgets.lb_camera_1, widgets.lb_camera_2, widgets.lb_camera_3, 
+                                             widgets.lb_camera_4, widgets.lb_camera_5, widgets.lb_camera_6])
         
         for i in range(len(self.camera_manager.cameras)):
             self.camera_manager.cameras[i].mousePressEvent = lambda event, i=i: self.camera_manager.maximize_camera(i)
@@ -56,7 +59,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         widgets.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
         UIFunctions.uiDefinitions(self)
 
-
         #cliques nos botões
         #menus esquerdos
         widgets.btn_home.clicked.connect(self.buttonClick)
@@ -64,10 +66,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         widgets.btn_videos.clicked.connect(self.buttonClick)
 
         #caixa extra esquerda
-        def openCloseLeftBox():
-            UIFunctions.toggleLeftBox(self, True)
-        widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
-        widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
+        #def openCloseLeftBox():
+           # UIFunctions.toggleLeftBox(self, False)
+        #widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
+        #widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
 
         #caixa extra direita
         def openCloseRightBox():
@@ -80,9 +82,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         useCustomTheme = False
         themeFile = "themes\py_safemac_dark.qss"
 
-        if useCustomTheme:
-            UIFunctions.theme(self, themeFile, True)
-            AppFunctions.setThemeHack(self)
+        #if useCustomTheme:
+            #UIFunctions.theme(self, themeFile, False)
+            #AppFunctions.setThemeHack(self)
 
         #definir página inicial e selecionar menu
         widgets.stackedWidget.setCurrentWidget(widgets.home)
@@ -90,32 +92,42 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         #adicionando imgs (logo e botoes)
         pixmap_logo = QPixmap("icon.png")
-        pixmap_logo = pixmap_logo.scaled(55, 55, Qt.KeepAspectRatio)  #define o tamanho máximo da imagem como 55x55 pixels
+        pixmap_logo = pixmap_logo.scaled(50, 50, Qt.KeepAspectRatio)  #define o tamanho máximo da imagem como 55x55 pixels
         self.ui.label_logo.setPixmap(pixmap_logo)
         self.ui.label_logo.setAlignment(Qt.AlignCenter) 
 
-        pixmap_select_imgs = QPixmap("images/images/camera.png")
+        pixmap_select_imgs = QPixmap("images/images/img_cameras.jpg")
         pixmap_select_imgs = pixmap_select_imgs.scaled(bh, bh, Qt.KeepAspectRatio)
-        self.ui.label_select_images.setPixmap(pixmap_select_imgs)
-        self.ui.label_select_images.setAlignment(Qt.AlignCenter)
+        self.ui.img_calibrate.setPixmap(pixmap_select_imgs)
+        self.ui.img_calibrate.setAlignment(Qt.AlignCenter)
 
-        
-        pixmap_view_cameras = QPixmap("images/images/live.png")
+        pixmap_view_cameras = QPixmap("images/images/img_operario.jpg")
         pixmap_view_cameras = pixmap_view_cameras.scaled(bh, bh, Qt.KeepAspectRatio)
-        self.ui.label_visu_cameras.setPixmap(pixmap_view_cameras)
-        self.ui.label_visu_cameras.setAlignment(Qt.AlignCenter)
+        self.ui.img_visualize.setPixmap(pixmap_view_cameras)
+        self.ui.img_visualize.setAlignment(Qt.AlignCenter)
+
+        # Conectar o sinal clicked do QPushButton "hide_confs_camera" ao método hide_confs_camera_clicked
+        widgets.hide_configs_camera.clicked.connect(self.hide_confs_camera_clicked)
+
+        grid_layout = self.ui.box_bottom.layout()
+
+        # ajustar proporção
+        grid_layout.setColumnStretch(0, 1)
+        grid_layout.setColumnStretch(1, 1)
+        grid_layout.setColumnStretch(2, 1)
+        
 
     def update_system_info(self):
         start_time = time.time()
 
         cpu = get_cpu_usage()
         ram = get_ram_usage()
-        temp = get_temperature() or 0
+        #temp = get_temperature() or 0
         fps = get_fps(100, start_time)
 
         self.ui.Qlabel_cpu_2.setText(f"{cpu:.2f}%")  
         self.ui.Qlabel_ram_2.setText(f"{ram:.2f}%") 
-        self.ui.Qlabel_temp_2.setText(f"{temp:.2f} C")
+        #self.ui.Qlabel_temp_2.setText(f"{temp:.2f} C")
         self.ui.Qlabel_fps_2.setText(f"{fps:.2f}")
         self.ui.Qlabel_fps_2.setText(f"{fps:.2f}")
 
@@ -131,34 +143,37 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         #mostrar página de widgets
 
-        #mostrar nova página
+        #mostrar pagina de cameras
         if btnName == "btn_cameras":
-            widgets.stackedWidget.setCurrentWidget(widgets.new_page) #definir página
+            widgets.stackedWidget.setCurrentWidget(widgets.cameras) #definir página
             UIFunctions.resetStyle(self, btnName) #redefinir outros botões selecionados
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) #selecionar menu
 
-        if btnName == "btn_save":
-            print("Botão salvar clicado!")
+        #mostrar pagina com planilhas de videos e calibracoes
+        if btnName == "btn_videos":
+            widgets.stackedWidget.setCurrentWidget(widgets.tabs) #definir página
+            UIFunctions.resetStyle(self, btnName) #redefinir outros botões selecionados
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) #selecionar menu
 
-        print(f'Botão "{btnName}" pressionado!')
+        #mostrar as configurações de camera
+        if btnName == "hide_configs_camera":
+            self.hide_confs_camera_clicked()
 
+        #abrir a pasta com os videos salvos
+        if btnName == "btn_videos_2":
+            UIFunctions.resetStyle(self, btnName) #redefinir outros botões selecionados
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) #selecionar menu
+            os.startfile(os.getcwd())
 
-    #eventos de redimensionamento
-    def resizeEvent(self, event):
-        UIFunctions.resize_grips(self)
-
-    #eventos de clique do mouse
-    def mousePressEvent(self, event):
-        #definir posição de arrasto da janela
-        self.dragPos = event.globalPos()
-
-        if event.buttons() == Qt.LeftButton:
-            print('Clique do mouse: botão esquerdo')
-        if event.buttons() == Qt.RightButton:
-            print('Clique do mouse: botão direito')
+    def hide_confs_camera_clicked(self):
+        if self.ui.bottom_configs.isHidden():
+            self.ui.bottom_configs.show()
+            self.ui.hide_configs_camera.setText("Ocultar configurações da câmera")
+        else:
+            self.ui.bottom_configs.hide()
+            self.ui.hide_configs_camera.setText("Mostrar configurações da câmera")
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon("icon.ico"))
+    app = QApplication([])
     window = MainWindow()
     sys.exit(app.exec_())

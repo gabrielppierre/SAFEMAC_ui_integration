@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainDlNKhD.ui'
+## Form generated from reading UI file 'mainBFZMzZ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.0
 ##
@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QGridLayout,
     QSpacerItem, QSpinBox, QStackedWidget, QTabWidget,
     QTableWidget, QTableWidgetItem, QTextEdit, QVBoxLayout,
     QWidget)
-from . resources_rc import *
+import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -702,6 +702,18 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.toggleLeftBox = QPushButton(self.bottomMenu)
+        self.toggleLeftBox.setObjectName(u"toggleLeftBox")
+        sizePolicy.setHeightForWidth(self.toggleLeftBox.sizePolicy().hasHeightForWidth())
+        self.toggleLeftBox.setSizePolicy(sizePolicy)
+        self.toggleLeftBox.setMinimumSize(QSize(0, 45))
+        self.toggleLeftBox.setFont(font)
+        self.toggleLeftBox.setCursor(QCursor(Qt.PointingHandCursor))
+        self.toggleLeftBox.setLayoutDirection(Qt.LeftToRight)
+        self.toggleLeftBox.setStyleSheet(u"background-image: url(:/icons/images/icons/icon_settings.png);")
+
+        self.verticalLayout_9.addWidget(self.toggleLeftBox)
+
 
         self.verticalMenuLayout.addWidget(self.bottomMenu, 0, Qt.AlignBottom)
 
@@ -809,6 +821,18 @@ class Ui_MainWindow(object):
         self.btn_adjustments.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-equalizer.png);")
 
         self.verticalLayout_11.addWidget(self.btn_adjustments)
+
+        self.btn_more = QPushButton(self.extraTopMenu)
+        self.btn_more.setObjectName(u"btn_more")
+        sizePolicy.setHeightForWidth(self.btn_more.sizePolicy().hasHeightForWidth())
+        self.btn_more.setSizePolicy(sizePolicy)
+        self.btn_more.setMinimumSize(QSize(0, 45))
+        self.btn_more.setFont(font)
+        self.btn_more.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_more.setLayoutDirection(Qt.LeftToRight)
+        self.btn_more.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-layers.png);")
+
+        self.verticalLayout_11.addWidget(self.btn_more)
 
 
         self.verticalLayout_12.addWidget(self.extraTopMenu, 0, Qt.AlignTop)
@@ -1080,17 +1104,20 @@ class Ui_MainWindow(object):
         self.verticalLayout_25.setContentsMargins(0, 0, 0, 0)
         self.frame_8 = QFrame(self.box_calibrate)
         self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setMaximumSize(QSize(16777215, 140))
         self.frame_8.setStyleSheet(u"background-color: none;")
         self.frame_8.setFrameShape(QFrame.NoFrame)
         self.frame_8.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_7 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_7.setSpacing(0)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalLayout_7.setContentsMargins(2, 2, 2, 2)
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.img_calibrate = QLabel(self.frame_8)
         self.img_calibrate.setObjectName(u"img_calibrate")
-        self.img_calibrate.setStyleSheet(u"border-radius: 7px;")
+        self.img_calibrate.setStyleSheet(u"#label_7 {\n"
+"    background-repeat: no-repeat;\n"
+"    background-position: center;\n"
+"}\n"
+"")
 
         self.horizontalLayout_7.addWidget(self.img_calibrate)
 
@@ -1154,17 +1181,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_26.setContentsMargins(0, 0, 0, 0)
         self.frame_11 = QFrame(self.box_visualize)
         self.frame_11.setObjectName(u"frame_11")
-        self.frame_11.setMaximumSize(QSize(16777215, 140))
         self.frame_11.setStyleSheet(u"background-color: none;")
         self.frame_11.setFrameShape(QFrame.NoFrame)
         self.frame_11.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.frame_11)
         self.horizontalLayout_8.setSpacing(0)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setContentsMargins(2, 2, 2, 2)
+        self.horizontalLayout_8.setContentsMargins(0, -1, 0, 0)
         self.img_visualize = QLabel(self.frame_11)
         self.img_visualize.setObjectName(u"img_visualize")
-        self.img_visualize.setStyleSheet(u"border-radius: 7px;")
 
         self.horizontalLayout_8.addWidget(self.img_visualize)
 
@@ -1227,17 +1252,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_27.setContentsMargins(0, 0, 0, 0)
         self.frame_20 = QFrame(self.box_instructions)
         self.frame_20.setObjectName(u"frame_20")
-        self.frame_20.setMaximumSize(QSize(16777215, 140))
         self.frame_20.setStyleSheet(u"background-color: none;")
         self.frame_20.setFrameShape(QFrame.NoFrame)
         self.frame_20.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_10 = QHBoxLayout(self.frame_20)
         self.horizontalLayout_10.setSpacing(0)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(2, 2, 2, 2)
+        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.img_instructions = QLabel(self.frame_20)
         self.img_instructions.setObjectName(u"img_instructions")
-        self.img_instructions.setStyleSheet(u"border-radius: 7px;")
 
         self.horizontalLayout_10.addWidget(self.img_instructions)
 
@@ -1251,7 +1274,6 @@ class Ui_MainWindow(object):
         self.frame_21.setFrameShadow(QFrame.Raised)
         self.verticalLayout_29 = QVBoxLayout(self.frame_21)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
-        self.verticalLayout_29.setContentsMargins(-1, 9, -1, -1)
         self.label_6 = QLabel(self.frame_21)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
@@ -1330,7 +1352,7 @@ class Ui_MainWindow(object):
 "QTabBar::tab {\n"
 "    background: #0000FF;\n"
 "    padding: 4px;\n"
-"    border-right: 2px solid #00004D;\n"
+"    border-right: 1px solid #00004D;\n"
 "}\n"
 "\n"
 "QTabBar::tab::last {\n"
@@ -2505,7 +2527,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         self.infos_saves.setCurrentIndex(0)
 
 
@@ -2525,6 +2547,7 @@ class Ui_MainWindow(object):
         self.btn_cameras.setText(QCoreApplication.translate("MainWindow", u"C\u00e2meras", None))
         self.btn_videos.setText(QCoreApplication.translate("MainWindow", u"Grava\u00e7\u00f5es", None))
         self.btn_exit.setText(QCoreApplication.translate("MainWindow", u"Sair", None))
+        self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
         self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
 #if QT_CONFIG(tooltip)
         self.extraCloseColumnBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Close left box", None))
@@ -2532,6 +2555,7 @@ class Ui_MainWindow(object):
         self.extraCloseColumnBtn.setText("")
         self.btn_share.setText(QCoreApplication.translate("MainWindow", u"Share", None))
         self.btn_adjustments.setText(QCoreApplication.translate("MainWindow", u"Adjustments", None))
+        self.btn_more.setText(QCoreApplication.translate("MainWindow", u"More", None))
         self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -2566,7 +2590,7 @@ class Ui_MainWindow(object):
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Acesse as c\u00e2meras em tempo real para monitorar continuamente o ambiente ao redor do equipamento. Mantenha-se informado e tome decis\u00f5es seguras com base em informa\u00e7\u00f5es atualizadas.", None))
         self.btn_visualize.setText(QCoreApplication.translate("MainWindow", u"Visualizar Detec\u00e7\u00f5es", None))
         self.img_instructions.setText("")
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Aqui est\u00e3o as instru\u00e7\u00f5es completas para a utiliza\u00e7\u00e3o e manuten\u00e7\u00e3o adequada do sistema. Familiarize-se com todas as funcionalidades para garantir a m\u00e1xima efici\u00eancia e seguran\u00e7a. Siga as orienta\u00e7\u00f5es e previna acidentes.", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Conhe\u00e7a o sistema em detalhes! Aqui est\u00e3o as instru\u00e7\u00f5es completas para a utiliza\u00e7\u00e3o e manuten\u00e7\u00e3o adequada do sistema. Familiarize-se com todas as funcionalidades para garantir a m\u00e1xima efici\u00eancia e seguran\u00e7a. Siga as orienta\u00e7\u00f5es e previna acidentes.", None))
         self.btn_instructions.setText(QCoreApplication.translate("MainWindow", u"Instru\u00e7\u00f5es", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Nome", None));
