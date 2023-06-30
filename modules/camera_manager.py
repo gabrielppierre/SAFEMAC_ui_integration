@@ -41,12 +41,12 @@ class CameraManager:
         self.target_shape = (680, 680)
         self.current_camera_index = 0
         self.model = Darknet_dummy('labels\\scene_gt.json', 'C:\\Users\\gabsp\\Downloads\\lm_train (1)\\train\\000001\\scene_camera.json', 'C:\\Users\\gabsp\\Downloads\\lm_models (2)\\models_eval\\obj_000001.ply')
-    
+
     def detect(self, frame):
-        corners2D = self.model.detect(0)
+        corners2D = self.model.detect(frame)
         print(corners2D.shape)
         return corners2D
-    
+
     def print_points(self, img, points):
         for (x, y) in points:
             cv2.circle(img, (int(x), int(y)), 3, (0, 255, 0), -1)
@@ -113,28 +113,28 @@ class CameraManager:
             if self.caps[i] is not None:
                 ret, frame = self.caps[i].read()
                 if ret:
-                    frame = cv2.flip(frame, 0) #espelha o frame horizontalmente
-                    #detecta pontos no frame
+                    frame = cv2.flip(frame, 0)  # Espelha o frame horizontalmente
+                    # Detecta pontos no frame
                     points = self.detect(frame)
-                    #desenha circulos em torno dos pontos
+                    # Desenha círculos em torno dos pontos
                     frame = self.print_points(frame, points)
                     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                     if self.recording and self.recorders[i] is not None:
-                        #converte o frame de volta para BGR, pois OpenCV espera que o frame esteja em BGR
+                        # Converte o frame de volta para BGR, pois o OpenCV espera que o frame esteja em BGR
                         self.recorders[i].write(cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
-                    #converteo frame para QImage
+                    # Converte o frame para QImage
                     img = QImage(frame, frame.shape[1], frame.shape[0], QImage.Format_RGB888)
                     pixmap = QPixmap.fromImage(img)
-                    #redimensione a QPixmap para caber na QLabel
+                    # Redimensiona a QPixmap para caber na QLabel
                     pixmap = pixmap.scaled(self.cameras[i].width(), self.cameras[i].height(), Qt.IgnoreAspectRatio)
                     self.cameras[i].setPixmap(pixmap)
                 else:
                     self.timers[i].stop()
                     if self.recording and self.recorders[i] is not None:
-                        #libera o gravador de video se estiver gravando
+                        # Libera o gravador de vídeo se estiver gravando
                         self.recorders[i].release()
                         self.recorders[i] = None
-                    #libera a captura de video
+                    # Libera a captura de vídeo
                     self.caps[i].release()
                     self.caps[i] = None
     

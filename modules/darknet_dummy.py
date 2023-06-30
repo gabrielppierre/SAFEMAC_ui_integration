@@ -11,7 +11,7 @@ class Darknet_dummy():
         self.cameras = self.read_json(camera_matrix_file)
         self.mesh = Model3D(obj_model)
 
-    def detect(self, image_id):
+    def detect(self, frame):
         image_id = str(self.cont)
         camera = numpy.array(self.cameras[image_id]['cam_K']).reshape((3,3))
         dist = numpy.array([0.,0.,0.,0.,0.])
