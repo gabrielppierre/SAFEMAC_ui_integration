@@ -2,7 +2,7 @@ PySide6
 opencv-python
 numpy
 torch
-PIL
+Pillow
 darknet
 torchvision
 vispy
