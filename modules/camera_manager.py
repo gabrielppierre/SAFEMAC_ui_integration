@@ -11,14 +11,17 @@ import torch
 from PIL import Image
 from torch.autograd import Variable
 from . detectt import Darknet_dummy
+import time
 
 class CameraWindow(QMainWindow):
-    def __init__(self, cap):
+    def __init__(self, cap, detect_func, print_points_func):
         super(CameraWindow, self).__init__()
         self.camera_label = QLabel()
         self.setCentralWidget(self.camera_label)
         self.showMaximized()
         self.cap = cap
+        self.detect_func = detect_func
+        self.print_points_func = print_points_func
         self.update_timer = QTimer()
         self.update_timer.timeout.connect(self.update_frame)
         self.update_timer.start(1)
@@ -27,6 +30,8 @@ class CameraWindow(QMainWindow):
         ret, frame = self.cap.read()
         if ret:
             frame = cv2.flip(frame, 1)
+            points = self.detect_func(frame)
+            frame = self.print_points_func(frame, points)
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             img = QImage(frame, frame.shape[1], frame.shape[0], QImage.Format_RGB888)
             pixmap = QPixmap.fromImage(img)
@@ -49,21 +54,30 @@ class CameraManager:
         self.camera_windows = [None for _ in self.cameras]
         self.modelcfg = "yolo-pose.cfg"
         self.weightfile = "PATH_TO_MODEL_WEIGHTS"#nao consegui encontrar o arquivo de pesos
-        self.target_shape = (680, 680)  #tamanho teste pra redimensionar as imagens
+        #self.target_shape = (680, 680)  #tamanho teste pra redimensionar as imagens
         self.current_camera_index = 0
-        self.model = Darknet_dummy('labels\\scene_gt.json', 'C:\\Users\\gabsp\\Downloads\\lm_train (1)\\train\\000001\\scene_camera.json', 'C:\\Users\\gabsp\\Downloads\\lm_models (2)\\models_eval\\obj_000001.ply')
-        
-    def detect(self, frame):
-        corners2D = self.model.detect(0)
-        print(corners2D.shape)
+        self.model = None
+        self.mesh_enabled = False
+    
+    def toggle_mesh(self):
+        self.mesh_enabled = not self.mesh_enabled
 
-        #retorno das coordenadas dos cantos 2D como resultado da deteccao
-        return corners2D
+    def detect(self, frame):
+        if self.model is not None:
+            # Realiza a detecção se self.model não for None
+            corners2D = self.model.detect(0)
+            # Resto do seu código...
+        else:
+            print("Modelo não inicializado.")
+            return None
+
 
     def print_points(self, img, points):
-        for (x, y) in points:
-            cv2.circle(img, (int(x), int(y)), 3, (0, 255, 0), -1)
+        if points is not None:
+            for (x, y) in points:
+                cv2.circle(img, (int(x), int(y)), 3, (0, 255, 0), -1)
         return img  
+
 
     #@staticmethod
     #def detect(img):
@@ -79,33 +93,64 @@ class CameraManager:
         #    img = cv2.circle(img, point, radius=3, color=(0, 255, 0), thickness=-1)
         #return img 
 
+    def select_files(self):
+        # Abre um diálogo de seleção de arquivo para o arquivo scene_gt.json
+        scene_gt_file = QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_gt.json", "", "JSON Files (*.json)")
+            
+        # Abre um diálogo de seleção de arquivo para o arquivo scene_camera.json
+        scene_camera_file = QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_camera.json", "", "JSON Files (*.json)")
+            
+        # Abre um diálogo de seleção de arquivo para o arquivo obj.ply
+        ply_file = QFileDialog.getOpenFileName(None, "Selecione o arquivo obj.ply", "", "PLY Files (*.ply)")
+
+        # Verifica se todos os arquivos foram selecionados
+        if scene_gt_file[0] and scene_camera_file[0] and ply_file[0]:
+            self.model = Darknet_dummy(scene_gt_file[0], scene_camera_file[0], ply_file[0])
+            return True
+        else:
+            reply = QMessageBox.warning(None, "Aviso", "Arquivos necessários não selecionados. Cancelar?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                return False
+            else:
+                return self.select_files()
+
+
     def add_camera_clicked(self):
-        # Atualiza camera_index para usar a câmera atual.
-        camera_index = self.current_camera_index
-        if camera_index in self.camera_indices:
+        user_wants_to_select_files = QMessageBox.question(None, "Aviso", "Deseja selecionar arquivos específicos para a câmera?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No) == QMessageBox.Yes
+        if user_wants_to_select_files and not self.select_files():
             return
 
-        # Verifica se o índice da câmera é válido
-        cap = cv2.VideoCapture(camera_index)
-        if not cap.isOpened():
+        while True:
+            cap = cv2.VideoCapture(self.current_camera_index)
+            time.sleep(1)  # adiciona um atraso para dar tempo à câmera de inicializar
+            if cap.isOpened():
+                break
             cap.release()
-            print(f"Camera index {camera_index} is not valid.")
-        else:
-            for i in range(len(self.caps)):
-                if self.caps[i] is None:
-                    self.caps[i] = cap
-                    self.camera_indices.append(camera_index)
-                    self.timers[i].start(1)
-                    break
+            self.current_camera_index += 1
+            if self.current_camera_index > 10:  # limitando a busca até o índice 10 para evitar um loop infinito
+                print("Nenhuma câmera disponível encontrada.")
+                return
+
+        for i in range(len(self.caps)):
+            if self.caps[i] is None:
+                self.caps[i] = cap
+                self.camera_indices.append(self.current_camera_index)
+                self.timers[i].start(1)
+                break
+
         self.current_camera_index += 1 # Incrementa o índice da câmera após adicionar uma.
 
 
     def add_recordings(self):
-        #abre uma caixa de dialogo para selecionar arquivos de video
+        if not self.select_files():
+            return
+
+        # Abre uma caixa de diálogo para selecionar arquivos de vídeo
         file_dialog = QFileDialog()
         file_dialog.setFileMode(QFileDialog.ExistingFiles)
         video_paths, _ = file_dialog.getOpenFileNames(None, "Select Videos", ".", "Video Files (*.mp4 *.flv *.ts *.3gp *.mov *.avi *.wmv *.png)")
         self.video_paths.extend(video_paths)
+
 
     def start_recording(self):
         if self.recording:
@@ -157,7 +202,8 @@ class CameraManager:
                     #detecta pontos no frame
                     points = self.detect(frame)
                     # Desenha círculos em torno dos pontos
-                    frame = self.print_points(frame, points)
+                    if self.mesh_enabled:
+                        frame = self.print_points(frame, points)
                     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                     if self.recording and self.recorders[i] is not None:
                         # Converte o frame de volta para BGR, pois o OpenCV espera que o frame esteja em BGR
@@ -178,6 +224,7 @@ class CameraManager:
                     self.caps[i].release()
                     self.caps[i] = None
 
+
     def stop_visu(self):
         # Parar todas as câmeras
         for i in range(len(self.caps)):
@@ -185,18 +232,18 @@ class CameraManager:
                 self.timers[i].stop()
                 self.caps[i].release()
                 self.caps[i] = None
-        
+
         # Parar todas as gravações
         for recorder in self.recorders:
             if recorder is not None:
                 recorder.release()
-        
+
         # Limpar as janelas de visualização de câmera
         for window in self.camera_windows:
             if window is not None:
                 window.close()
         self.camera_windows = [None for _ in self.cameras]
-        
+
         # Limpar a lista de capturas de vídeo e gravadores
         self.caps = [None for _ in self.cameras]
         self.recorders = [None for _ in self.cameras]
@@ -206,12 +253,18 @@ class CameraManager:
 
         # Reiniciar o índice da câmera atual
         self.current_camera_index = 0
-        self.model.reset_parameters()
+        if self.model is not None: # Adiciona uma verificação para self.model
+            self.model.reset_parameters()
 
         for camera in self.cameras:
             camera.clear()
+
     
     def maximize_camera(self, index):
+        if self.caps[index] is None:
+            print(f"Nenhuma câmera ativa ou vídeo no índice {index}")
+            return
+
         if self.maximized_camera == index:
             self.maximized_camera = None
             self.camera_windows[index].close()
@@ -221,7 +274,7 @@ class CameraManager:
                 if window is not None:
                     window.close()
                     self.camera_windows[i] = None
-            self.camera_windows[index] = CameraWindow(self.caps[index])  #passa a instancia do VideoCapture para a CameraWindow
+            self.camera_windows[index] = CameraWindow(self.caps[index], self.detect, self.print_points)
             self.maximized_camera = index
 
     

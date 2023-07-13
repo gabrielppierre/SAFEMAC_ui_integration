@@ -71,8 +71,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.timer.start(1000)  #Iniciando o timer
 
     def setup_camera_manager(self):
-        #Configuracao do gerenciador de camera
-        self.camera_manager = CameraManager([widgets.lb_camera_1], widgets.frame_26)
+        # Configuração do gerenciador de câmera
+        self.camera_manager = CameraManager(
+            [widgets.lb_camera_1, widgets.lb_camera_2, widgets.lb_camera_3, widgets.lb_camera_4],
+            widgets.frame_26
+        )
 
         #Associa os eventos de clique do mouse as cameras no gerenciador de camera
         for i in range(len(self.camera_manager.cameras)):
@@ -90,6 +93,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         widgets.btn_stop_rec.clicked.connect(self.camera_manager.stop_recording)
         widgets.btn_stop_visu.clicked.connect(self.camera_manager.stop_visu)
         widgets.btn_new_video.clicked.connect(self.open_image_selection_dialog)
+        widgets.atv_mesh.clicked.connect(self.camera_manager.toggle_mesh)
 
     def add_camera(self):
         # cria um novo frame
@@ -114,9 +118,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # adiciona o label ao gerenciador de cameras
         self.camera_manager.cameras.append(new_label)
-        self.camera_manager.add_camera_clicked()
-
-
+        #self.camera_manager.add_camera_clicked()
 
 
     def setup_ui_appearance(self):
@@ -257,4 +259,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)  #Cria uma instancia de QApplication
     app.setWindowIcon(QIcon("icon.ico"))  #Define o icone da janela
     window = MainWindow()  #Cria uma instancia da janela principal
-    sys.exit(app.exec_())  #Executa o loop de eventos da aplicacao e finaliza o programa quando a janela principal eh fechada
+    sys.exit(app.exec())  #Executa o loop de eventos da aplicacao e finaliza o programa quando a janela principal eh fechada

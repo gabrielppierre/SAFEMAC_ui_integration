@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainMmqRzA.ui'
+## Form generated from reading UI file 'mainLfjnOd.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.0
 ##
@@ -15,12 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QGridLayout,
-    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
-    QMainWindow, QPushButton, QSizePolicy, QSlider,
-    QSpacerItem, QSpinBox, QStackedWidget, QTabWidget,
-    QTableWidget, QTableWidgetItem, QTextEdit, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QGroupBox,
+    QHBoxLayout, QHeaderView, QLabel, QMainWindow,
+    QPushButton, QSizePolicy, QSlider, QSpacerItem,
+    QSpinBox, QStackedWidget, QTabWidget, QTableWidget,
+    QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
 from . resources_rc import *
 
 class Ui_MainWindow(object):
@@ -66,7 +65,7 @@ class Ui_MainWindow(object):
 "Bg App */\n"
 "#bgApp {	\n"
 "	background-color: #000033;\n"
-"	border: 1px solid #000066;\n"
+"	border: 1px solid rgb(44, 49, 58);\n"
 "}\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
@@ -75,9 +74,9 @@ class Ui_MainWindow(object):
 "	background-color: #000080;\n"
 "}\n"
 "#topLogo {\n"
-"	background-color: #000033;\n"
-"	background-image: ur"
-                        "l(:/images/images/images/PyDracula.png);\n"
+"	background-color: rgb(33, 37, 43);\n"
+"	back"
+                        "ground-image: url(:/images/images/images/PyDracula.png);\n"
 "	background-position: centered;\n"
 "	background-repeat: no-repeat;\n"
 "}\n"
@@ -111,9 +110,9 @@ class Ui_MainWindow(object):
 "	padding-left: 44px;\n"
 "}\n"
 "#bottomMenu .QPushButton:hover {\n"
-"	background-color: #000099;\n"
-""
-                        "}\n"
+"	background-colo"
+                        "r: #000099;\n"
+"}\n"
 "#bottomMenu .QPushButton:pressed {	\n"
 "	background-color: #0935B0;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -156,8 +155,8 @@ class Ui_MainWindow(object):
 "/* Icon */\n"
 "#extraIcon {\n"
 "	background-position: center;\n"
-"	background-repeat: no-r"
-                        "epeat;\n"
+"	backgro"
+                        "und-repeat: no-repeat;\n"
 "	background-image: url(:/icons/images/icons/icon_settings.png);\n"
 "}\n"
 "\n"
@@ -166,8 +165,8 @@ class Ui_MainWindow(object):
 "\n"
 "/* Btn Close */\n"
 "#extraCloseColumnBtn { background-color: rgba(255, 255, 255, 0); border: none;  border-radius: 5px; }\n"
-"#extraCloseColumnBtn:hover { background-color: #FFD700; border-style: solid; border-radius: 4px; }\n"
-"#extraCloseColumnBtn:pressed { background-color: #E6C300; border-style: solid; border-radius: 4px; }\n"
+"#extraCloseColumnBtn:hover { background-color: rgb(196, 161, 249); border-style: solid; border-radius: 4px; }\n"
+"#extraCloseColumnBtn:pressed { background-color: rgb(180, 141, 238); border-style: solid; border-radius: 4px; }\n"
 "\n"
 "/* Extra Content */\n"
 "\n"
@@ -186,12 +185,12 @@ class Ui_MainWindow(object):
 "	padding-left: 44px;\n"
 "}\n"
 "#extraTopMenu .QPushButton:hover {\n"
-"	background-color: #000033;\n"
+"	background-color: rgb(40, 44, 52);\n"
 "}\n"
-"#extraTopMenu .QPushButton:pressed {	\n"
+"#extraTopMenu .QPushButto"
+                        "n:pressed {	\n"
 "	background-color: #0935B0;\n"
-""
-                        "	color: rgb(255, 255, 255);\n"
+"	color: rgb(255, 255, 255);\n"
 "}\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
@@ -214,10 +213,10 @@ class Ui_MainWindow(object):
 "\n"
 "/* Bottom Bar */\n"
 "#bottomBar { background-color: #00004D; }\n"
-"#bottomBar QLabel { font-size: 11px; color: rgb(113, 126, 149); padding-left: 10px; padding-right: 10px; padding-bottom: 2px; }\n"
+"#bottomBar QLabel { font-size: 11px; color: rgb(113, 126, 149); padding-left: 10px; padding-right: 10p"
+                        "x; padding-bottom: 2px; }\n"
 "\n"
-"/* CONTENT SET"
-                        "TINGS */\n"
+"/* CONTENT SETTINGS */\n"
 "/* MENUS */\n"
 "#contentSettings .QPushButton {	\n"
 "	background-position: left center;\n"
@@ -229,7 +228,7 @@ class Ui_MainWindow(object):
 "	padding-left: 44px;\n"
 "}\n"
 "#contentSettings .QPushButton:hover {\n"
-"	background-color: #000033;\n"
+"	background-color: rgb(40, 44, 52);\n"
 "}\n"
 "#contentSettings .QPushButton:pressed {	\n"
 "	background-color: #0935B0;\n"
@@ -242,65 +241,65 @@ class Ui_MainWindow(object):
 "	background-color: transparent;\n"
 "	padding: 10px;\n"
 "	border-radius: 5px;\n"
-"	gridline-color: #000033;\n"
+"	gridline-color: rgb(44, 49, 58);\n"
 "	border-bottom: 1px solid #262680;\n"
 "}\n"
 "QTableWidget::item{\n"
-"	border-color: #000033;\n"
+"	border-color: rgb(44, 49, 60);\n"
 "	padding-left: 5px;\n"
 "	padding-right: 5px;\n"
-"	gridline-color: #000033;\n"
+"	gridline-color: rgb(44, 49, 60);\n"
 "}\n"
-"QTableWidget::item:selected{\n"
+"QTableWidget:"
+                        ":item:selected{\n"
 "	background-color: #0935B0;\n"
 "}\n"
 "QHeaderView::section{\n"
-""
-                        "	background-color: #000033;\n"
+"	background-color: rgb(33, 37, 43);\n"
 "	max-width: 30px;\n"
-"	border: 1px solid #000033;\n"
+"	border: 1px solid rgb(44, 49, 58);\n"
 "	border-style: none;\n"
-"    border-bottom: 1px solid #000033;\n"
-"    border-right: 1px solid #000033;\n"
+"    border-bottom: 1px solid rgb(44, 49, 60);\n"
+"    border-right: 1px solid rgb(44, 49, 60);\n"
 "}\n"
 "QTableWidget::horizontalHeader {	\n"
-"	background-color: #000033;\n"
+"	background-color: rgb(33, 37, 43);\n"
 "}\n"
 "QHeaderView::section:horizontal\n"
 "{\n"
-"    border: 1px solid #000033;\n"
-"	background-color: #000033;\n"
+"    border: 1px solid rgb(33, 37, 43);\n"
+"	background-color: rgb(33, 37, 43);\n"
 "	padding: 3px;\n"
 "	border-top-left-radius: 7px;\n"
 "    border-top-right-radius: 7px;\n"
 "}\n"
 "QHeaderView::section:vertical\n"
 "{\n"
-"    border: 1px solid #000033;\n"
+"    border: 1px solid rgb(44, 49, 60);\n"
 "}\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
 "LineEdit */\n"
 "QLineEdit {\n"
-"	background-color: #000033;\n"
+"	background-color: rgb(33, 37, 43);\n"
 "	border-radius: 5px;\n"
-"	border: 2px solid #000033;\n"
+"	border: 2px solid rgb(33, 37, 43);\n"
 "	padding-left: 10px;\n"
 "	selection-color: rgb(255, 255, 255);\n"
-"	selection-background-color: #ffff00;\n"
+""
+                        "	selection-background-color: #ffff00;\n"
 "}\n"
 "QLineEdit:hover {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "}\n"
 "QLineEdit:focus {\n"
-"	border: 2px solid rgb(91,"
-                        " 101, 124);\n"
+"	border: 2px solid rgb(91, 101, 124);\n"
 "}\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
 "PlainTextEdit */\n"
 "QPlainTextEdit {\n"
-"	background-color: #000033;\n"
+"	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
 "	padding: 10px;\n"
 "	selection-color: rgb(255, 255, 255);\n"
@@ -324,15 +323,15 @@ class Ui_MainWindow(object):
 "QScrollBar:horizontal {\n"
 "    border: none;\n"
 "    background: rgb(52, 59, 72);\n"
-"    height: 8px;\n"
+"    heig"
+                        "ht: 8px;\n"
 "    margin: 0px 21px 0 21px;\n"
 "	border-radius: 0px;\n"
 "}\n"
 "QScrollBar::handle:horizontal {\n"
 "    background: #0935B0;\n"
 "    min-width: 25px;\n"
-"	bord"
-                        "er-radius: 4px\n"
+"	border-radius: 4px\n"
 "}\n"
 "QScrollBar::add-line:horizontal {\n"
 "    border: none;\n"
@@ -362,15 +361,15 @@ class Ui_MainWindow(object):
 "}\n"
 " QScrollBar:vertical {\n"
 "	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
+"    background: rgb(52, 5"
+                        "9, 72);\n"
 "    width: 8px;\n"
 "    margin: 21px 0 21px 0;\n"
 "	border-radius: 0px;\n"
 " }\n"
 " QScrollBar::handle:vertical {	\n"
 "	background: #0935B0;\n"
-"    min-height:"
-                        " 25px;\n"
+"    min-height: 25px;\n"
 "	border-radius: 4px\n"
 " }\n"
 " QScrollBar::add-line:vertical {\n"
@@ -399,13 +398,13 @@ class Ui_MainWindow(object):
 "     background: none;\n"
 " }\n"
 "\n"
-"/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
+"/* ///////////////////////////////////////////////"
+                        "//////////////////////////////////////////////////\n"
 "CheckBox */\n"
 "QCheckBox::indicator {\n"
 "    border: 3px solid rgb(52, 59, 72);\n"
 "	width: 15px;\n"
-"	height: 15px"
-                        ";\n"
+"	height: 15px;\n"
 "	border-radius: 10px;\n"
 "    background: #000099;\n"
 "}\n"
@@ -432,16 +431,16 @@ class Ui_MainWindow(object):
 "}\n"
 "QRadioButton::indicator:checked {\n"
 "    background: 3px solid rgb(94, 106, 130);\n"
-"	border: 3px solid rgb(52, 59, 72);	\n"
+"	border: 3px solid rgb(52, "
+                        "59, 72);	\n"
 "}\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
 "ComboBox */\n"
 "QComboBox{\n"
-"	background"
-                        "-color: #000033;\n"
+"	background-color: red;\n"
 "	border-radius: 5px;\n"
-"	border: 2px solid #000033;\n"
+"	border: 2px solid rgb(33, 37, 43);\n"
 "	padding: 5px;\n"
 "	padding-left: 10px;\n"
 "}\n"
@@ -453,7 +452,7 @@ class Ui_MainWindow(object):
 "	subcontrol-position: top right;\n"
 "	width: 25px; \n"
 "	border-left-width: 3px;\n"
-"	border-left-color: red;\n"
+"	border-left-color: rgba(39, 44, 54, 150);\n"
 "	border-left-style: solid;\n"
 "	border-top-right-radius: 3px;\n"
 "	border-bottom-right-radius: 3px;	\n"
@@ -463,19 +462,19 @@ class Ui_MainWindow(object):
 " }\n"
 "QComboBox QAbstractItemView {\n"
 "	color: #ffff00;	\n"
-"	background-color: #000033;\n"
+"	background-color: red;\n"
 "	padding: 10px;\n"
 "	selection-background-color: rgb(39, 44, 54);\n"
 "}\n"
 "\n"
-"/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
+"/* /////////////////////////////////////////"
+                        "////////////////////////////////////////////////////////\n"
 "Sliders */\n"
 "QSlider::groove:horizontal {\n"
 "    border-radius: 5px;\n"
 "    height: 10px;\n"
 "	margin: 0px;\n"
-"	background-c"
-                        "olor: rgb(52, 59, 72);\n"
+"	background-color: rgb(52, 59, 72);\n"
 "}\n"
 "QSlider::groove:horizontal:hover {\n"
 "	background-color: rgb(55, 62, 76);\n"
@@ -509,15 +508,15 @@ class Ui_MainWindow(object):
 "	border: none;\n"
 "    height: 10px;\n"
 "    width: 10px;\n"
-"    margin: 0px;\n"
+""
+                        "    margin: 0px;\n"
 "	border-radius: 5px;\n"
 "}\n"
 "QSlider::handle:vertical:hover {\n"
 "    background-color: #0935B0;\n"
 "}\n"
 "QSlider::handle:vertical:pressed {\n"
-"    background-co"
-                        "lor: #ffff00;\n"
+"    background-color: #ffff00;\n"
 "}\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
@@ -529,7 +528,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QCommandLinkButton:hover {	\n"
 "	color: rgb(255, 170, 255);\n"
-"	background-color: #000033;\n"
+"	background-color: rgb(44, 49, 60);\n"
 "}\n"
 "QCommandLinkButton:pressed {	\n"
 "	color: rgb(189, 147, 249);\n"
@@ -545,7 +544,8 @@ class Ui_MainWindow(object):
 "}\n"
 "#pagesContainer QPushButton:hover {\n"
 "	background-color: rgb(57, 65, 80);\n"
-"	border: 2px solid rgb(61, 70, 86);\n"
+"	border: 2px solid r"
+                        "gb(61, 70, 86);\n"
 "}\n"
 "#pagesContainer QPushButton:pressed {	\n"
 "	background-color: rgb(35, 40, 49);\n"
@@ -596,6 +596,9 @@ class Ui_MainWindow(object):
         self.titleLeftApp.setFont(font1)
         self.titleLeftApp.setStyleSheet(u"")
         self.titleLeftApp.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.label_5 = QLabel(self.topLogoInfo)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setGeometry(QRect(0, 20, 441, 331))
         self.label_logo = QLabel(self.topLogoInfo)
         self.label_logo.setObjectName(u"label_logo")
         self.label_logo.setGeometry(QRect(0, 0, 61, 51))
@@ -631,8 +634,7 @@ class Ui_MainWindow(object):
         self.toggleButton.setFont(font)
         self.toggleButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.toggleButton.setLayoutDirection(Qt.LeftToRight)
-        self.toggleButton.setStyleSheet(u"background-image: url(:/icons/images/icons/icon_menu.png);\n"
-"")
+        self.toggleButton.setStyleSheet(u"background-image: url(:/icons/images/icons/icon_menu.png);")
 
         self.verticalLayout_4.addWidget(self.toggleButton)
 
@@ -1024,8 +1026,8 @@ class Ui_MainWindow(object):
         self.pagesContainer.setStyleSheet(u"background-color: ")
         self.pagesContainer.setFrameShape(QFrame.NoFrame)
         self.pagesContainer.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_44 = QVBoxLayout(self.pagesContainer)
-        self.verticalLayout_44.setObjectName(u"verticalLayout_44")
+        self.verticalLayout = QVBoxLayout(self.pagesContainer)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.stackedWidget = QStackedWidget(self.pagesContainer)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setStyleSheet(u"background: transparent;")
@@ -1524,28 +1526,94 @@ class Ui_MainWindow(object):
         self.box_cameras_top.setMinimumSize(QSize(0, 300))
         self.box_cameras_top.setFrameShape(QFrame.StyledPanel)
         self.box_cameras_top.setFrameShadow(QFrame.Raised)
-        self.gridLayout_7 = QGridLayout(self.box_cameras_top)
-        self.gridLayout_7.setSpacing(4)
-        self.gridLayout_7.setObjectName(u"gridLayout_7")
-        self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout = QGridLayout(self.box_cameras_top)
+        self.gridLayout.setSpacing(4)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.tela_4 = QFrame(self.box_cameras_top)
+        self.tela_4.setObjectName(u"tela_4")
+        self.tela_4.setStyleSheet(u"background-color: #000099;")
+        self.tela_4.setFrameShape(QFrame.NoFrame)
+        self.tela_4.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.tela_4)
+        self.horizontalLayout_10.setSpacing(0)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.lb_camera_4 = QLabel(self.tela_4)
+        self.lb_camera_4.setObjectName(u"lb_camera_4")
+
+        self.horizontalLayout_10.addWidget(self.lb_camera_4)
+
+
+        self.gridLayout.addWidget(self.tela_4, 1, 0, 1, 1)
+
+        self.tela_2 = QFrame(self.box_cameras_top)
+        self.tela_2.setObjectName(u"tela_2")
+        self.tela_2.setStyleSheet(u"background-color: #000099;")
+        self.tela_2.setFrameShape(QFrame.NoFrame)
+        self.tela_2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.tela_2)
+        self.horizontalLayout_7.setSpacing(0)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.lb_camera_2 = QLabel(self.tela_2)
+        self.lb_camera_2.setObjectName(u"lb_camera_2")
+
+        self.horizontalLayout_7.addWidget(self.lb_camera_2)
+
+
+        self.gridLayout.addWidget(self.tela_2, 0, 1, 1, 1)
+
         self.tela_1 = QFrame(self.box_cameras_top)
         self.tela_1.setObjectName(u"tela_1")
-        self.tela_1.setMinimumSize(QSize(0, 0))
-        self.tela_1.setStyleSheet(u"background-color: rgb(170, 170, 127);\n"
-"color: rgb(0, 0, 0);")
+        self.tela_1.setStyleSheet(u"background-color: #000099;")
         self.tela_1.setFrameShape(QFrame.NoFrame)
         self.tela_1.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_63 = QVBoxLayout(self.tela_1)
-        self.verticalLayout_63.setSpacing(0)
-        self.verticalLayout_63.setObjectName(u"verticalLayout_63")
-        self.verticalLayout_63.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_6 = QHBoxLayout(self.tela_1)
+        self.horizontalLayout_6.setSpacing(0)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.lb_camera_1 = QLabel(self.tela_1)
         self.lb_camera_1.setObjectName(u"lb_camera_1")
 
-        self.verticalLayout_63.addWidget(self.lb_camera_1)
+        self.horizontalLayout_6.addWidget(self.lb_camera_1)
 
 
-        self.gridLayout_7.addWidget(self.tela_1, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.tela_1, 0, 0, 1, 1)
+
+        self.tela_3 = QFrame(self.box_cameras_top)
+        self.tela_3.setObjectName(u"tela_3")
+        self.tela_3.setStyleSheet(u"background-color: #000099;")
+        self.tela_3.setFrameShape(QFrame.NoFrame)
+        self.tela_3.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_8 = QHBoxLayout(self.tela_3)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.lb_camera_3 = QLabel(self.tela_3)
+        self.lb_camera_3.setObjectName(u"lb_camera_3")
+
+        self.horizontalLayout_8.addWidget(self.lb_camera_3)
+
+
+        self.gridLayout.addWidget(self.tela_3, 0, 2, 1, 1)
+
+        self.tela_5 = QFrame(self.box_cameras_top)
+        self.tela_5.setObjectName(u"tela_5")
+        self.tela_5.setStyleSheet(u"background-color: #000099;")
+        self.tela_5.setFrameShape(QFrame.NoFrame)
+        self.tela_5.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.tela_5)
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.lb_camera_5 = QLabel(self.tela_5)
+        self.lb_camera_5.setObjectName(u"lb_camera_5")
+
+        self.horizontalLayout_11.addWidget(self.lb_camera_5)
+
+
+        self.gridLayout.addWidget(self.tela_5, 1, 1, 1, 2)
 
 
         self.horizontalLayout_15.addWidget(self.box_cameras_top)
@@ -1693,22 +1761,77 @@ class Ui_MainWindow(object):
         self.gridLayout_16.setContentsMargins(-1, 5, -1, 8)
         self.gridLayout_11 = QGridLayout()
         self.gridLayout_11.setObjectName(u"gridLayout_11")
-        self.label_62 = QLabel(self.gb_roi)
-        self.label_62.setObjectName(u"label_62")
-        self.label_62.setMinimumSize(QSize(0, 20))
-        self.label_62.setStyleSheet(u"margin: 0px 0px 2px 0px;")
+        self.label_64 = QLabel(self.gb_roi)
+        self.label_64.setObjectName(u"label_64")
 
-        self.gridLayout_11.addWidget(self.label_62, 4, 1, 1, 1)
+        self.gridLayout_11.addWidget(self.label_64, 3, 2, 1, 1)
+
+        self.ROI_Y = QSpinBox(self.gb_roi)
+        self.ROI_Y.setObjectName(u"ROI_Y")
+        self.ROI_Y.setMinimumSize(QSize(0, 20))
+        self.ROI_Y.setStyleSheet(u"color: rgb(0, 0, 0);\n"
+"margin: 0px 0px 2px 0px;\n"
+"background-color: rgb(195, 204, 223);\n"
+"font: 500 9pt \"Segoe UI Variable Small\";")
+        self.ROI_Y.setMinimum(0)
+        self.ROI_Y.setMaximum(1000)
+        self.ROI_Y.setValue(20)
+
+        self.gridLayout_11.addWidget(self.ROI_Y, 1, 3, 1, 1)
+
+        self.add_inter = QPushButton(self.gb_roi)
+        self.add_inter.setObjectName(u"add_inter")
+        self.add_inter.setStyleSheet(u"QPushButton{\n"
+"	padding: 4px;\n"
+"	border: none;\n"
+"	color: rgb(26, 26, 26);\n"
+"	background-color: rgb(255, 255, 0);\n"
+"	border-radius: 7px;\n"
+"	margin-top: 8px;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"	color: rgb(63, 63, 63);\n"
+"	background-color: rgb(255, 255, 38);\n"
+"}")
+
+        self.gridLayout_11.addWidget(self.add_inter, 4, 0, 1, 4)
+
+        self.ROI_X = QSpinBox(self.gb_roi)
+        self.ROI_X.setObjectName(u"ROI_X")
+        self.ROI_X.setMinimumSize(QSize(0, 20))
+        self.ROI_X.setStyleSheet(u"color: rgb(0, 0, 0);\n"
+"margin: 0px 0px 2px 0px;\n"
+"background-color: rgb(195, 204, 223);\n"
+"font: 500 9pt \"Segoe UI Variable Small\";")
+        self.ROI_X.setMinimum(0)
+        self.ROI_X.setMaximum(1000)
+        self.ROI_X.setValue(20)
+
+        self.gridLayout_11.addWidget(self.ROI_X, 1, 1, 1, 1)
+
+        self.ROI_W = QSpinBox(self.gb_roi)
+        self.ROI_W.setObjectName(u"ROI_W")
+        self.ROI_W.setMinimumSize(QSize(0, 20))
+        self.ROI_W.setStyleSheet(u"color: rgb(0, 0, 0);\n"
+"margin: 0px 0px 2px 0px;\n"
+"background-color: rgb(195, 204, 223);\n"
+"font: 500 9pt \"Segoe UI Variable Small\";")
+        self.ROI_W.setMaximum(2000)
+        self.ROI_W.setValue(1000)
+
+        self.gridLayout_11.addWidget(self.ROI_W, 3, 1, 1, 1)
+
+        self.label_66 = QLabel(self.gb_roi)
+        self.label_66.setObjectName(u"label_66")
+        self.label_66.setMaximumSize(QSize(20, 16777215))
+
+        self.gridLayout_11.addWidget(self.label_66, 1, 0, 1, 1)
 
         self.label_63 = QLabel(self.gb_roi)
         self.label_63.setObjectName(u"label_63")
 
         self.gridLayout_11.addWidget(self.label_63, 3, 0, 1, 1)
-
-        self.label_64 = QLabel(self.gb_roi)
-        self.label_64.setObjectName(u"label_64")
-
-        self.gridLayout_11.addWidget(self.label_64, 3, 2, 1, 1)
 
         self.label_65 = QLabel(self.gb_roi)
         self.label_65.setObjectName(u"label_65")
@@ -1727,73 +1850,6 @@ class Ui_MainWindow(object):
         self.ROI_H.setValue(1000)
 
         self.gridLayout_11.addWidget(self.ROI_H, 3, 3, 1, 1)
-
-        self.btn_roi_set = QPushButton(self.gb_roi)
-        self.btn_roi_set.setObjectName(u"btn_roi_set")
-        self.btn_roi_set.setMinimumSize(QSize(0, 20))
-        self.btn_roi_set.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_roi_set.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(26, 26, 26);\n"
-"	background-color: rgb(255, 255, 0);\n"
-"	border-radius: 7px;\n"
-"}\n"
-"\n"
-"QPushButton::hover{\n"
-"	color: rgb(63, 63, 63);\n"
-"	background-color: rgb(255, 255, 38);\n"
-"}")
-
-        self.gridLayout_11.addWidget(self.btn_roi_set, 4, 3, 1, 1)
-
-        self.ckb_roi = QCheckBox(self.gb_roi)
-        self.ckb_roi.setObjectName(u"ckb_roi")
-        self.ckb_roi.setMinimumSize(QSize(0, 20))
-
-        self.gridLayout_11.addWidget(self.ckb_roi, 4, 0, 1, 1, Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.ROI_X = QSpinBox(self.gb_roi)
-        self.ROI_X.setObjectName(u"ROI_X")
-        self.ROI_X.setMinimumSize(QSize(0, 20))
-        self.ROI_X.setStyleSheet(u"color: rgb(0, 0, 0);\n"
-"margin: 0px 0px 2px 0px;\n"
-"background-color: rgb(195, 204, 223);\n"
-"font: 500 9pt \"Segoe UI Variable Small\";")
-        self.ROI_X.setMinimum(0)
-        self.ROI_X.setMaximum(1000)
-        self.ROI_X.setValue(20)
-
-        self.gridLayout_11.addWidget(self.ROI_X, 1, 1, 1, 1)
-
-        self.label_66 = QLabel(self.gb_roi)
-        self.label_66.setObjectName(u"label_66")
-        self.label_66.setMaximumSize(QSize(20, 16777215))
-
-        self.gridLayout_11.addWidget(self.label_66, 1, 0, 1, 1)
-
-        self.ROI_Y = QSpinBox(self.gb_roi)
-        self.ROI_Y.setObjectName(u"ROI_Y")
-        self.ROI_Y.setMinimumSize(QSize(0, 20))
-        self.ROI_Y.setStyleSheet(u"color: rgb(0, 0, 0);\n"
-"margin: 0px 0px 2px 0px;\n"
-"background-color: rgb(195, 204, 223);\n"
-"font: 500 9pt \"Segoe UI Variable Small\";")
-        self.ROI_Y.setMinimum(0)
-        self.ROI_Y.setMaximum(1000)
-        self.ROI_Y.setValue(20)
-
-        self.gridLayout_11.addWidget(self.ROI_Y, 1, 3, 1, 1)
-
-        self.ROI_W = QSpinBox(self.gb_roi)
-        self.ROI_W.setObjectName(u"ROI_W")
-        self.ROI_W.setMinimumSize(QSize(0, 20))
-        self.ROI_W.setStyleSheet(u"color: rgb(0, 0, 0);\n"
-"margin: 0px 0px 2px 0px;\n"
-"background-color: rgb(195, 204, 223);\n"
-"font: 500 9pt \"Segoe UI Variable Small\";")
-        self.ROI_W.setMaximum(2000)
-        self.ROI_W.setValue(1000)
-
-        self.gridLayout_11.addWidget(self.ROI_W, 3, 1, 1, 1)
 
 
         self.gridLayout_16.addLayout(self.gridLayout_11, 0, 0, 1, 1)
@@ -1822,6 +1878,24 @@ class Ui_MainWindow(object):
         self.gridLayout_8.setObjectName(u"gridLayout_8")
         self.gridLayout_8.setHorizontalSpacing(2)
         self.gridLayout_8.setContentsMargins(4, 1, 4, 1)
+        self.btn_stop_visu = QPushButton(self.groupBox_visu)
+        self.btn_stop_visu.setObjectName(u"btn_stop_visu")
+        self.btn_stop_visu.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_stop_visu.setStyleSheet(u"QPushButton{\n"
+"	padding: 4px;\n"
+"	border: none;\n"
+"	color: rgb(26, 26, 26);\n"
+"	background-color: rgb(255, 255, 0);\n"
+"	border-radius: 7px;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"	color: rgb(63, 63, 63);\n"
+"	background-color: rgb(255, 255, 38);\n"
+"}")
+
+        self.gridLayout_8.addWidget(self.btn_stop_visu, 1, 0, 1, 1)
+
         self.btn_visu = QPushButton(self.groupBox_visu)
         self.btn_visu.setObjectName(u"btn_visu")
         self.btn_visu.setCursor(QCursor(Qt.PointingHandCursor))
@@ -1840,10 +1914,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.btn_visu, 0, 0, 1, 1)
 
-        self.btn_stop_visu = QPushButton(self.groupBox_visu)
-        self.btn_stop_visu.setObjectName(u"btn_stop_visu")
-        self.btn_stop_visu.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_stop_visu.setStyleSheet(u"QPushButton{\n"
+        self.btn_stop_rec = QPushButton(self.groupBox_visu)
+        self.btn_stop_rec.setObjectName(u"btn_stop_rec")
+        self.btn_stop_rec.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_stop_rec.setStyleSheet(u"QPushButton{\n"
 "	padding: 4px;\n"
 "	border: none;\n"
 "	color: rgb(26, 26, 26);\n"
@@ -1856,7 +1930,7 @@ class Ui_MainWindow(object):
 "	background-color: rgb(255, 255, 38);\n"
 "}")
 
-        self.gridLayout_8.addWidget(self.btn_stop_visu, 1, 0, 1, 1)
+        self.gridLayout_8.addWidget(self.btn_stop_rec, 3, 0, 1, 1)
 
         self.btn_init_rec = QPushButton(self.groupBox_visu)
         self.btn_init_rec.setObjectName(u"btn_init_rec")
@@ -1876,10 +1950,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.btn_init_rec, 2, 0, 1, 1)
 
-        self.btn_stop_rec = QPushButton(self.groupBox_visu)
-        self.btn_stop_rec.setObjectName(u"btn_stop_rec")
-        self.btn_stop_rec.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_stop_rec.setStyleSheet(u"QPushButton{\n"
+        self.atv_mesh = QPushButton(self.groupBox_visu)
+        self.atv_mesh.setObjectName(u"atv_mesh")
+        self.atv_mesh.setCursor(QCursor(Qt.PointingHandCursor))
+        self.atv_mesh.setStyleSheet(u"QPushButton{\n"
 "	padding: 4px;\n"
 "	border: none;\n"
 "	color: rgb(26, 26, 26);\n"
@@ -1892,7 +1966,7 @@ class Ui_MainWindow(object):
 "	background-color: rgb(255, 255, 38);\n"
 "}")
 
-        self.gridLayout_8.addWidget(self.btn_stop_rec, 3, 0, 1, 1)
+        self.gridLayout_8.addWidget(self.atv_mesh, 4, 0, 1, 1)
 
 
         self.horizontalLayout_39.addWidget(self.groupBox_visu)
@@ -2296,7 +2370,7 @@ class Ui_MainWindow(object):
 
         self.stackedWidget.addWidget(self.cameras)
 
-        self.verticalLayout_44.addWidget(self.stackedWidget)
+        self.verticalLayout.addWidget(self.stackedWidget)
 
 
         self.horizontalLayout_4.addWidget(self.pagesContainer)
@@ -2446,6 +2520,10 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.titleLeftApp.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>SafeMac</p></body></html>", None))
+#if QT_CONFIG(whatsthis)
+        self.label_5.setWhatsThis(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><img src=\":/images/images/images/icon.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
+        self.label_5.setText("")
         self.label_logo.setText("")
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"Esconder", None))
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"In\u00edcio", None))
@@ -2541,7 +2619,11 @@ class Ui_MainWindow(object):
         self.infos_saves.setTabText(self.infos_saves.indexOf(self.cameras_tab), QCoreApplication.translate("MainWindow", u"C\u00e2meras", None))
         self.infos_saves.setTabText(self.infos_saves.indexOf(self.bumps_tab), QCoreApplication.translate("MainWindow", u"Grava\u00e7\u00f5es", None))
         self.infos_saves.setTabText(self.infos_saves.indexOf(self.config_dest), QCoreApplication.translate("MainWindow", u"Destino", None))
-        self.lb_camera_1.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">camera 1</p></body></html>", None))
+        self.lb_camera_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">adicione c\u00e2mera</p></body></html>", None))
+        self.lb_camera_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">adicione c\u00e2mera</p></body></html>", None))
+        self.lb_camera_1.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">adicione c\u00e2mera</p></body></html>", None))
+        self.lb_camera_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">adicione c\u00e2mera</p></body></html>", None))
+        self.lb_camera_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">2D view</p></body></html>", None))
         self.hide_configs_camera.setText(QCoreApplication.translate("MainWindow", u"Esconder", None))
 #if QT_CONFIG(tooltip)
         self.label_61.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#1a1a1a;\">Adicionar uma nova c\u00e2mera</span></p></body></html>", None))
@@ -2550,18 +2632,17 @@ class Ui_MainWindow(object):
         self.btn_add_camera.setText(QCoreApplication.translate("MainWindow", u"Adicionar", None))
         self.btn_recordings.setText(QCoreApplication.translate("MainWindow", u"Grava\u00e7\u00f5es", None))
         self.gb_roi.setTitle(QCoreApplication.translate("MainWindow", u"Regi\u00e3o de interesse central", None))
-        self.label_62.setText(QCoreApplication.translate("MainWindow", u"Desenhar malha", None))
-        self.label_63.setText(QCoreApplication.translate("MainWindow", u"W:", None))
         self.label_64.setText(QCoreApplication.translate("MainWindow", u"H:", None))
-        self.label_65.setText(QCoreApplication.translate("MainWindow", u"Y:", None))
-        self.btn_roi_set.setText(QCoreApplication.translate("MainWindow", u"SET", None))
-        self.ckb_roi.setText("")
+        self.add_inter.setText(QCoreApplication.translate("MainWindow", u"adicionar", None))
         self.label_66.setText(QCoreApplication.translate("MainWindow", u"X:", None))
+        self.label_63.setText(QCoreApplication.translate("MainWindow", u"W:", None))
+        self.label_65.setText(QCoreApplication.translate("MainWindow", u"Y:", None))
         self.groupBox_visu.setTitle(QCoreApplication.translate("MainWindow", u"Visualiza\u00e7\u00e3o", None))
-        self.btn_visu.setText(QCoreApplication.translate("MainWindow", u"Iniciar visualiza\u00e7\u00e3o", None))
         self.btn_stop_visu.setText(QCoreApplication.translate("MainWindow", u"Parar visualiza\u00e7\u00e3o", None))
-        self.btn_init_rec.setText(QCoreApplication.translate("MainWindow", u"Iniciar grava\u00e7\u00e3o", None))
+        self.btn_visu.setText(QCoreApplication.translate("MainWindow", u"Iniciar visualiza\u00e7\u00e3o", None))
         self.btn_stop_rec.setText(QCoreApplication.translate("MainWindow", u"Parar grava\u00e7\u00e3o", None))
+        self.btn_init_rec.setText(QCoreApplication.translate("MainWindow", u"Iniciar grava\u00e7\u00e3o", None))
+        self.atv_mesh.setText(QCoreApplication.translate("MainWindow", u"Ativar malhas", None))
         self.groupBox_8.setTitle(QCoreApplication.translate("MainWindow", u"Configura\u00e7\u00f5es de HSV", None))
         self.left_title.setText(QCoreApplication.translate("MainWindow", u"HSV Max", None))
         self.right_title.setText(QCoreApplication.translate("MainWindow", u"HSV Min", None))

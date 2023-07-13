@@ -1806,7 +1806,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_44">
+                  <layout class="QVBoxLayout" name="verticalLayout">
                    <item>
                     <widget class="QStackedWidget" name="stackedWidget">
                      <property name="styleSheet">
@@ -2759,7 +2759,7 @@ QPushButton::pressed{
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
-                            <layout class="QGridLayout" name="gridLayout_7">
+                            <layout class="QGridLayout" name="gridLayout">
                              <property name="leftMargin">
                               <number>0</number>
                              </property>
@@ -2775,17 +2775,10 @@ QPushButton::pressed{
                              <property name="spacing">
                               <number>4</number>
                              </property>
-                             <item row="0" column="0">
-                              <widget class="QFrame" name="tela_1">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>0</height>
-                                </size>
-                               </property>
+                             <item row="1" column="0">
+                              <widget class="QFrame" name="tela_4">
                                <property name="styleSheet">
-                                <string notr="true">background-color: rgb(170, 170, 127);
-color: rgb(0, 0, 0);</string>
+                                <string notr="true">background-color: #000099;</string>
                                </property>
                                <property name="frameShape">
                                 <enum>QFrame::NoFrame</enum>
@@ -2793,7 +2786,81 @@ color: rgb(0, 0, 0);</string>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
-                               <layout class="QVBoxLayout" name="verticalLayout_63">
+                               <layout class="QHBoxLayout" name="horizontalLayout_10">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QLabel" name="lb_camera_4">
+                                  <property name="text">
+                                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;adicione câmera&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item row="0" column="1">
+                              <widget class="QFrame" name="tela_2">
+                               <property name="styleSheet">
+                                <string notr="true">background-color: #000099;</string>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::NoFrame</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QLabel" name="lb_camera_2">
+                                  <property name="text">
+                                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;adicione câmera&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item row="0" column="0">
+                              <widget class="QFrame" name="tela_1">
+                               <property name="styleSheet">
+                                <string notr="true">background-color: #000099;</string>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::NoFrame</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_6">
                                 <property name="spacing">
                                  <number>0</number>
                                 </property>
@@ -2812,7 +2879,81 @@ color: rgb(0, 0, 0);</string>
                                 <item>
                                  <widget class="QLabel" name="lb_camera_1">
                                   <property name="text">
-                                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;camera 1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;adicione câmera&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item row="0" column="2">
+                              <widget class="QFrame" name="tela_3">
+                               <property name="styleSheet">
+                                <string notr="true">background-color: #000099;</string>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::NoFrame</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QLabel" name="lb_camera_3">
+                                  <property name="text">
+                                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;adicione câmera&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item row="1" column="1" colspan="2">
+                              <widget class="QFrame" name="tela_5">
+                               <property name="styleSheet">
+                                <string notr="true">background-color: #000099;</string>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::NoFrame</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_11">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QLabel" name="lb_camera_5">
+                                  <property name="text">
+                                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;2D view&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -3105,148 +3246,11 @@ QPushButton::hover{
                                     <number>8</number>
                                    </property>
                                    <item row="0" column="0">
-                                    <layout class="QGridLayout" name="gridLayout_11" rowminimumheight="0,0,0,0,0" columnminimumwidth="0,0,0,0">
-                                     <item row="4" column="1">
-                                      <widget class="QLabel" name="label_62">
-                                       <property name="minimumSize">
-                                        <size>
-                                         <width>0</width>
-                                         <height>20</height>
-                                        </size>
-                                       </property>
-                                       <property name="styleSheet">
-                                        <string notr="true">margin: 0px 0px 2px 0px;</string>
-                                       </property>
-                                       <property name="text">
-                                        <string>Desenhar malha</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="3" column="0">
-                                      <widget class="QLabel" name="label_63">
-                                       <property name="text">
-                                        <string>W:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
+                                    <layout class="QGridLayout" name="gridLayout_11">
                                      <item row="3" column="2">
                                       <widget class="QLabel" name="label_64">
                                        <property name="text">
                                         <string>H:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="1" column="2">
-                                      <widget class="QLabel" name="label_65">
-                                       <property name="maximumSize">
-                                        <size>
-                                         <width>20</width>
-                                         <height>16777215</height>
-                                        </size>
-                                       </property>
-                                       <property name="text">
-                                        <string>Y:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="3" column="3">
-                                      <widget class="QSpinBox" name="ROI_H">
-                                       <property name="minimumSize">
-                                        <size>
-                                         <width>0</width>
-                                         <height>20</height>
-                                        </size>
-                                       </property>
-                                       <property name="styleSheet">
-                                        <string notr="true">color: rgb(0, 0, 0);
-margin: 0px 0px 2px 0px;
-background-color: rgb(195, 204, 223);
-font: 500 9pt &quot;Segoe UI Variable Small&quot;;</string>
-                                       </property>
-                                       <property name="maximum">
-                                        <number>2000</number>
-                                       </property>
-                                       <property name="value">
-                                        <number>1000</number>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="4" column="3">
-                                      <widget class="QPushButton" name="btn_roi_set">
-                                       <property name="minimumSize">
-                                        <size>
-                                         <width>0</width>
-                                         <height>20</height>
-                                        </size>
-                                       </property>
-                                       <property name="cursor">
-                                        <cursorShape>PointingHandCursor</cursorShape>
-                                       </property>
-                                       <property name="styleSheet">
-                                        <string notr="true">QPushButton{
-	color: rgb(26, 26, 26);
-	background-color: rgb(255, 255, 0);
-	border-radius: 7px;
-}
-
-QPushButton::hover{
-	color: rgb(63, 63, 63);
-	background-color: rgb(255, 255, 38);
-}</string>
-                                       </property>
-                                       <property name="text">
-                                        <string>SET</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="4" column="0" alignment="Qt::AlignLeft|Qt::AlignVCenter">
-                                      <widget class="QCheckBox" name="ckb_roi">
-                                       <property name="minimumSize">
-                                        <size>
-                                         <width>0</width>
-                                         <height>20</height>
-                                        </size>
-                                       </property>
-                                       <property name="text">
-                                        <string/>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="1" column="1">
-                                      <widget class="QSpinBox" name="ROI_X">
-                                       <property name="minimumSize">
-                                        <size>
-                                         <width>0</width>
-                                         <height>20</height>
-                                        </size>
-                                       </property>
-                                       <property name="styleSheet">
-                                        <string notr="true">color: rgb(0, 0, 0);
-margin: 0px 0px 2px 0px;
-background-color: rgb(195, 204, 223);
-font: 500 9pt &quot;Segoe UI Variable Small&quot;;</string>
-                                       </property>
-                                       <property name="minimum">
-                                        <number>0</number>
-                                       </property>
-                                       <property name="maximum">
-                                        <number>1000</number>
-                                       </property>
-                                       <property name="value">
-                                        <number>20</number>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="1" column="0">
-                                      <widget class="QLabel" name="label_66">
-                                       <property name="maximumSize">
-                                        <size>
-                                         <width>20</width>
-                                         <height>16777215</height>
-                                        </size>
-                                       </property>
-                                       <property name="text">
-                                        <string>X:</string>
                                        </property>
                                       </widget>
                                      </item>
@@ -3275,8 +3279,110 @@ font: 500 9pt &quot;Segoe UI Variable Small&quot;;</string>
                                        </property>
                                       </widget>
                                      </item>
+                                     <item row="4" column="0" colspan="4">
+                                      <widget class="QPushButton" name="add_inter">
+                                       <property name="styleSheet">
+                                        <string notr="true">QPushButton{
+	padding: 4px;
+	border: none;
+	color: rgb(26, 26, 26);
+	background-color: rgb(255, 255, 0);
+	border-radius: 7px;
+	margin-top: 8px;
+}
+
+QPushButton::hover{
+	color: rgb(63, 63, 63);
+	background-color: rgb(255, 255, 38);
+}</string>
+                                       </property>
+                                       <property name="text">
+                                        <string>adicionar</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="1" column="1">
+                                      <widget class="QSpinBox" name="ROI_X">
+                                       <property name="minimumSize">
+                                        <size>
+                                         <width>0</width>
+                                         <height>20</height>
+                                        </size>
+                                       </property>
+                                       <property name="styleSheet">
+                                        <string notr="true">color: rgb(0, 0, 0);
+margin: 0px 0px 2px 0px;
+background-color: rgb(195, 204, 223);
+font: 500 9pt &quot;Segoe UI Variable Small&quot;;</string>
+                                       </property>
+                                       <property name="minimum">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="maximum">
+                                        <number>1000</number>
+                                       </property>
+                                       <property name="value">
+                                        <number>20</number>
+                                       </property>
+                                      </widget>
+                                     </item>
                                      <item row="3" column="1">
                                       <widget class="QSpinBox" name="ROI_W">
+                                       <property name="minimumSize">
+                                        <size>
+                                         <width>0</width>
+                                         <height>20</height>
+                                        </size>
+                                       </property>
+                                       <property name="styleSheet">
+                                        <string notr="true">color: rgb(0, 0, 0);
+margin: 0px 0px 2px 0px;
+background-color: rgb(195, 204, 223);
+font: 500 9pt &quot;Segoe UI Variable Small&quot;;</string>
+                                       </property>
+                                       <property name="maximum">
+                                        <number>2000</number>
+                                       </property>
+                                       <property name="value">
+                                        <number>1000</number>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="1" column="0">
+                                      <widget class="QLabel" name="label_66">
+                                       <property name="maximumSize">
+                                        <size>
+                                         <width>20</width>
+                                         <height>16777215</height>
+                                        </size>
+                                       </property>
+                                       <property name="text">
+                                        <string>X:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="3" column="0">
+                                      <widget class="QLabel" name="label_63">
+                                       <property name="text">
+                                        <string>W:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="1" column="2">
+                                      <widget class="QLabel" name="label_65">
+                                       <property name="maximumSize">
+                                        <size>
+                                         <width>20</width>
+                                         <height>16777215</height>
+                                        </size>
+                                       </property>
+                                       <property name="text">
+                                        <string>Y:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="3" column="3">
+                                      <widget class="QSpinBox" name="ROI_H">
                                        <property name="minimumSize">
                                         <size>
                                          <width>0</width>
@@ -3364,6 +3470,30 @@ color: rgb(192, 192, 192);
                                    <property name="horizontalSpacing">
                                     <number>2</number>
                                    </property>
+                                   <item row="1" column="0">
+                                    <widget class="QPushButton" name="btn_stop_visu">
+                                     <property name="cursor">
+                                      <cursorShape>PointingHandCursor</cursorShape>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true">QPushButton{
+	padding: 4px;
+	border: none;
+	color: rgb(26, 26, 26);
+	background-color: rgb(255, 255, 0);
+	border-radius: 7px;
+}
+
+QPushButton::hover{
+	color: rgb(63, 63, 63);
+	background-color: rgb(255, 255, 38);
+}</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>Parar visualização</string>
+                                     </property>
+                                    </widget>
+                                   </item>
                                    <item row="0" column="0">
                                     <widget class="QPushButton" name="btn_visu">
                                      <property name="cursor">
@@ -3388,8 +3518,8 @@ QPushButton::hover{
                                      </property>
                                     </widget>
                                    </item>
-                                   <item row="1" column="0">
-                                    <widget class="QPushButton" name="btn_stop_visu">
+                                   <item row="3" column="0">
+                                    <widget class="QPushButton" name="btn_stop_rec">
                                      <property name="cursor">
                                       <cursorShape>PointingHandCursor</cursorShape>
                                      </property>
@@ -3408,7 +3538,7 @@ QPushButton::hover{
 }</string>
                                      </property>
                                      <property name="text">
-                                      <string>Parar visualização</string>
+                                      <string>Parar gravação</string>
                                      </property>
                                     </widget>
                                    </item>
@@ -3436,8 +3566,8 @@ QPushButton::hover{
                                      </property>
                                     </widget>
                                    </item>
-                                   <item row="3" column="0">
-                                    <widget class="QPushButton" name="btn_stop_rec">
+                                   <item row="4" column="0">
+                                    <widget class="QPushButton" name="atv_mesh">
                                      <property name="cursor">
                                       <cursorShape>PointingHandCursor</cursorShape>
                                      </property>
@@ -3456,7 +3586,7 @@ QPushButton::hover{
 }</string>
                                      </property>
                                      <property name="text">
-                                      <string>Parar gravação</string>
+                                      <string>Ativar malhas</string>
                                      </property>
                                     </widget>
                                    </item>

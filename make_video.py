@@ -23,4 +23,4 @@ def make_video(image_folder, video_name, fps):
 
     video.release()
 
-make_video('C:\\Users\\gabsp\\Downloads\\lm_test_bop19\\test\\000001\\rgb', 'projeto_em_ordem.mp4', 3)
+#make_video('C:\\Users\\gabsp\\Downloads\\lm_test_bop19\\test\\000001\\rgb', 'projeto_em_ordem.mp4', 3)
