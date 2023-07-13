@@ -10,7 +10,8 @@ from . single6dofPose.utils import get_region_boxes
 import torch
 from PIL import Image
 from torch.autograd import Variable
-from . detectt import Darknet_dummy
+from . detect_darknet import Darknet_dummy
+from . detect_pedestrian import Pedestrian
 import time
 
 class CameraWindow(QMainWindow):
@@ -38,6 +39,15 @@ class CameraWindow(QMainWindow):
             pixmap = pixmap.scaled(self.camera_label.width(), self.camera_label.height(), Qt.IgnoreAspectRatio)
             self.camera_label.setPixmap(pixmap)
 
+class DetectorFactory:
+    def create_detector(self, detector_type, files):
+        if detector_type == "Darknet Dummy":
+            return Darknet_dummy(*files)
+        elif detector_type == "Pedestrian":
+            return Pedestrian(*files)
+        else:
+            raise ValueError(f"Invalid detector type: {detector_type}")
+
 class CameraManager:
     def __init__(self, cameras, frame):
         self.cameras = cameras
@@ -57,6 +67,7 @@ class CameraManager:
         #self.target_shape = (680, 680)  #tamanho teste pra redimensionar as imagens
         self.current_camera_index = 0
         self.model = None
+        self.detector_factory = DetectorFactory()
         self.mesh_enabled = False
     
     def toggle_mesh(self):
@@ -94,25 +105,32 @@ class CameraManager:
         #return img 
 
     def select_files(self):
-        # Abre um diálogo de seleção de arquivo para o arquivo scene_gt.json
-        scene_gt_file = QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_gt.json", "", "JSON Files (*.json)")
-            
-        # Abre um diálogo de seleção de arquivo para o arquivo scene_camera.json
-        scene_camera_file = QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_camera.json", "", "JSON Files (*.json)")
-            
-        # Abre um diálogo de seleção de arquivo para o arquivo obj.ply
-        ply_file = QFileDialog.getOpenFileName(None, "Selecione o arquivo obj.ply", "", "PLY Files (*.ply)")
-
+        # Pergunta ao usuário para qual função os arquivos devem ser selecionados
+        file_type, _ = QInputDialog.getItem(None, "Selecione o tipo de arquivo", "Para qual função você deseja adicionar os arquivos?", ["Darknet Dummy", "Pedestrian"], 0, False)
+        
+        # Abre diálogos de seleção de arquivo de acordo com a função escolhida
+        files = []
+        if file_type == "Darknet Dummy":
+            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_gt.json", "", "JSON Files (*.json)")[0])
+            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_camera.json", "", "JSON Files (*.json)")[0])
+            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo obj.ply", "", "PLY Files (*.ply)")[0])
+        else:  # file_type == "Pedestrian"
+            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo pedestrian_file1", "", "JSON Files (*.json)")[0])
+            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo pedestrian_file2", "", "JSON Files (*.json)")[0])
+            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo pedestrian_file3", "", "PLY Files (*.ply)")[0])
+        
         # Verifica se todos os arquivos foram selecionados
-        if scene_gt_file[0] and scene_camera_file[0] and ply_file[0]:
-            self.model = Darknet_dummy(scene_gt_file[0], scene_camera_file[0], ply_file[0])
+        if all(files):
+            self.model = self.detector_factory.create_detector(file_type, files)
             return True
+
+        # Se não todos os arquivos necessários foram selecionados, pergunta ao usuário se deseja cancelar
+        reply = QMessageBox.warning(None, "Aviso", "Arquivos necessários não selecionados. Cancelar?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            return False
         else:
-            reply = QMessageBox.warning(None, "Aviso", "Arquivos necessários não selecionados. Cancelar?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-            if reply == QMessageBox.Yes:
-                return False
-            else:
-                return self.select_files()
+            return self.select_files()
+
 
 
     def add_camera_clicked(self):
@@ -122,7 +140,6 @@ class CameraManager:
 
         while True:
             cap = cv2.VideoCapture(self.current_camera_index)
-            time.sleep(1)  # adiciona um atraso para dar tempo à câmera de inicializar
             if cap.isOpened():
                 break
             cap.release()
@@ -142,7 +159,8 @@ class CameraManager:
 
 
     def add_recordings(self):
-        if not self.select_files():
+        user_wants_to_select_files = QMessageBox.question(None, "Aviso", "Deseja selecionar arquivos adicionais para o vídeo?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No) == QMessageBox.Yes
+        if user_wants_to_select_files and not self.select_files():
             return
 
         # Abre uma caixa de diálogo para selecionar arquivos de vídeo

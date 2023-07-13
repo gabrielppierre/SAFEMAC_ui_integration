@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainLfjnOd.ui'
+## Form generated from reading UI file 'mainBRoxYf.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.0
 ##
@@ -775,6 +775,10 @@ class Ui_MainWindow(object):
         self.extraCloseColumnBtn.setMinimumSize(QSize(28, 28))
         self.extraCloseColumnBtn.setMaximumSize(QSize(28, 28))
         self.extraCloseColumnBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.extraCloseColumnBtn.setStyleSheet(u"QPushButton:hover {\n"
+"    background-color: #FFD700;\n"
+"}\n"
+"")
         icon = QIcon()
         icon.addFile(u":/icons/images/icons/icon_close.png", QSize(), QIcon.Normal, QIcon.Off)
         self.extraCloseColumnBtn.setIcon(icon)
@@ -798,6 +802,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
         self.extraTopMenu = QFrame(self.extraContent)
         self.extraTopMenu.setObjectName(u"extraTopMenu")
+        self.extraTopMenu.setStyleSheet(u"QPushButton:hover {\n"
+"    background-color: #000033;\n"
+"}\n"
+"")
         self.extraTopMenu.setFrameShape(QFrame.NoFrame)
         self.extraTopMenu.setFrameShadow(QFrame.Raised)
         self.verticalLayout_11 = QVBoxLayout(self.extraTopMenu)
@@ -836,7 +844,9 @@ class Ui_MainWindow(object):
         self.btn_new_video.setFont(font)
         self.btn_new_video.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_new_video.setLayoutDirection(Qt.LeftToRight)
-        self.btn_new_video.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-camera-roll.png);")
+        self.btn_new_video.setStyleSheet(u"QPushButton{\n"
+"	background-image: url(:/icons/images/icons/cil-camera-roll.png);\n"
+"}")
 
         self.verticalLayout_11.addWidget(self.btn_new_video)
 
@@ -2531,7 +2541,7 @@ class Ui_MainWindow(object):
         self.btn_videos.setText(QCoreApplication.translate("MainWindow", u"Grava\u00e7\u00f5es", None))
         self.btn_exit.setText(QCoreApplication.translate("MainWindow", u"Sair", None))
         self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"Menu", None))
-        self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
+        self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"Menu Lateral", None))
 #if QT_CONFIG(tooltip)
         self.extraCloseColumnBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Close left box", None))
 #endif // QT_CONFIG(tooltip)

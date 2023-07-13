@@ -1152,7 +1152,7 @@ Button */
                   </size>
                  </property>
                  <property name="text">
-                  <string>Left Box</string>
+                  <string>Menu Lateral</string>
                  </property>
                 </widget>
                </item>
@@ -1175,6 +1175,12 @@ Button */
                  </property>
                  <property name="toolTip">
                   <string>Close left box</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton:hover {
+    background-color: #FFD700;
+}
+</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -1222,6 +1228,12 @@ Button */
              </property>
              <item alignment="Qt::AlignTop">
               <widget class="QFrame" name="extraTopMenu">
+               <property name="styleSheet">
+                <string notr="true">QPushButton:hover {
+    background-color: #000033;
+}
+</string>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
@@ -1348,7 +1360,9 @@ Button */
                    <enum>Qt::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-camera-roll.png);</string>
+                   <string notr="true">QPushButton{
+	background-image: url(:/icons/images/icons/cil-camera-roll.png);
+}</string>
                   </property>
                   <property name="text">
                    <string>Novo vídeo</string>
