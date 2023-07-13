@@ -76,7 +76,7 @@ class CameraManager:
     def detect(self, frame):
         if self.model is not None:
             # Realiza a detecção se self.model não for None
-            corners2D = self.model.detect(0)
+            corners2D = self.model.detect(frame)
             # Resto do seu código...
         else:
             print("Modelo não inicializado.")
@@ -115,9 +115,7 @@ class CameraManager:
             files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_camera.json", "", "JSON Files (*.json)")[0])
             files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo obj.ply", "", "PLY Files (*.ply)")[0])
         else:  # file_type == "Pedestrian"
-            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo pedestrian_file1", "", "JSON Files (*.json)")[0])
-            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo pedestrian_file2", "", "JSON Files (*.json)")[0])
-            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo pedestrian_file3", "", "PLY Files (*.ply)")[0])
+            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo gt-pedestrian.txt", "", "TXT Files (*.txt)")[0])
         
         # Verifica se todos os arquivos foram selecionados
         if all(files):
@@ -130,8 +128,6 @@ class CameraManager:
             return False
         else:
             return self.select_files()
-
-
 
     def add_camera_clicked(self):
         user_wants_to_select_files = QMessageBox.question(None, "Aviso", "Deseja selecionar arquivos específicos para a câmera?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No) == QMessageBox.Yes

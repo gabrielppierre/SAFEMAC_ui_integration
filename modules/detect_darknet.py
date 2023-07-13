@@ -1,6 +1,6 @@
 import cv2
 import yaml
-from . single6dofPose.model3d import Model3D
+from .single6dofPose.model3d import Model3D
 import numpy
 import json
 
