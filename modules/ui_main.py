@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainBRoxYf.ui'
+## Form generated from reading UI file 'mainwPsgyU.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.0
 ##
@@ -1398,7 +1398,9 @@ class Ui_MainWindow(object):
         self.bottom_table.setFrameShape(QFrame.StyledPanel)
         self.bottom_table.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_14 = QHBoxLayout(self.bottom_table)
+        self.horizontalLayout_14.setSpacing(0)
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.horizontalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.tableWidget = QTableWidget(self.bottom_table)
         if (self.tableWidget.columnCount() < 12):
             self.tableWidget.setColumnCount(12)
@@ -1429,6 +1431,9 @@ class Ui_MainWindow(object):
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setStyleSheet(u"QHeaderView::section {\n"
 "    border-radius: 0px;\n"
+"	background-color: #000099;\n"
+"	border: none;\n"
+"	margin-left: 2px;\n"
 "}\n"
 "QHeaderView::section:first {\n"
 "    border-top-left-radius: 7px;\n"
@@ -1507,10 +1512,87 @@ class Ui_MainWindow(object):
         self.infos_saves.addTab(self.cameras_tab, "")
         self.bumps_tab = QWidget()
         self.bumps_tab.setObjectName(u"bumps_tab")
+        self.horizontalLayout_16 = QHBoxLayout(self.bumps_tab)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.tableWidget_2 = QTableWidget(self.bumps_tab)
+        if (self.tableWidget_2.columnCount() < 3):
+            self.tableWidget_2.setColumnCount(3)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(0, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(1, __qtablewidgetitem13)
+        __qtablewidgetitem14 = QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(2, __qtablewidgetitem14)
+        self.tableWidget_2.setObjectName(u"tableWidget_2")
+        self.tableWidget_2.setStyleSheet(u"QHeaderView::section {\n"
+"    border-radius: 0px;\n"
+"	background-color: #000099;\n"
+"	border: none;\n"
+"	margin-left: 2px;\n"
+"}\n"
+"QHeaderView::section:first {\n"
+"    border-top-left-radius: 7px;\n"
+"}\n"
+"QHeaderView::section {\n"
+"    border-top-hight-radius: 7px;\n"
+"}\n"
+"")
+        self.tableWidget_2.setFrameShape(QFrame.NoFrame)
+        self.tableWidget_2.horizontalHeader().setDefaultSectionSize(160)
+
+        self.horizontalLayout_16.addWidget(self.tableWidget_2)
+
+        self.config_box_2 = QFrame(self.bumps_tab)
+        self.config_box_2.setObjectName(u"config_box_2")
+        self.config_box_2.setStyleSheet(u"QPushButton{\n"
+"	background-color: #000099;\n"
+"	padding: 5px;\n"
+"	color: #c0c0c0;\n"
+"	border: none;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"	background-color: yellow;\n"
+"	color: black;\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"	background-color: #E6E600;\n"
+"	color: black;\n"
+"}")
+        self.config_box_2.setFrameShape(QFrame.StyledPanel)
+        self.config_box_2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_44 = QVBoxLayout(self.config_box_2)
+        self.verticalLayout_44.setObjectName(u"verticalLayout_44")
+        self.pushButton_6 = QPushButton(self.config_box_2)
+        self.pushButton_6.setObjectName(u"pushButton_6")
+        self.pushButton_6.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_44.addWidget(self.pushButton_6)
+
+        self.pushButton_7 = QPushButton(self.config_box_2)
+        self.pushButton_7.setObjectName(u"pushButton_7")
+        self.pushButton_7.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_44.addWidget(self.pushButton_7)
+
+        self.pushButton_8 = QPushButton(self.config_box_2)
+        self.pushButton_8.setObjectName(u"pushButton_8")
+        self.pushButton_8.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_44.addWidget(self.pushButton_8)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_44.addItem(self.verticalSpacer_2)
+
+
+        self.horizontalLayout_16.addWidget(self.config_box_2)
+
         self.infos_saves.addTab(self.bumps_tab, "")
-        self.config_dest = QWidget()
-        self.config_dest.setObjectName(u"config_dest")
-        self.infos_saves.addTab(self.config_dest, "")
+        self.table_confg = QWidget()
+        self.table_confg.setObjectName(u"table_confg")
+        self.infos_saves.addTab(self.table_confg, "")
 
         self.verticalLayout_17.addWidget(self.infos_saves)
 
@@ -2520,8 +2602,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
-        self.infos_saves.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
+        self.infos_saves.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2627,8 +2709,20 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"Importar", None))
         self.infos_saves.setTabText(self.infos_saves.indexOf(self.cameras_tab), QCoreApplication.translate("MainWindow", u"C\u00e2meras", None))
+        ___qtablewidgetitem12 = self.tableWidget_2.horizontalHeaderItem(0)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"Nome", None));
+        ___qtablewidgetitem13 = self.tableWidget_2.horizontalHeaderItem(1)
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"Data", None));
+        ___qtablewidgetitem14 = self.tableWidget_2.horizontalHeaderItem(2)
+        ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindow", u"Hora", None));
+        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"Apagar", None))
+        self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"Encaminhar", None))
+#if QT_CONFIG(tooltip)
+        self.pushButton_8.setToolTip("")
+#endif // QT_CONFIG(tooltip)
+        self.pushButton_8.setText(QCoreApplication.translate("MainWindow", u"Mudar Endere\u00e7o", None))
         self.infos_saves.setTabText(self.infos_saves.indexOf(self.bumps_tab), QCoreApplication.translate("MainWindow", u"Grava\u00e7\u00f5es", None))
-        self.infos_saves.setTabText(self.infos_saves.indexOf(self.config_dest), QCoreApplication.translate("MainWindow", u"Destino", None))
+        self.infos_saves.setTabText(self.infos_saves.indexOf(self.table_confg), QCoreApplication.translate("MainWindow", u"Configura\u00e7\u00e3o Padr\u00e3o", None))
         self.lb_camera_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">adicione c\u00e2mera</p></body></html>", None))
         self.lb_camera_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">adicione c\u00e2mera</p></body></html>", None))
         self.lb_camera_1.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">adicione c\u00e2mera</p></body></html>", None))

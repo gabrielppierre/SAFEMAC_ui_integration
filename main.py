@@ -159,6 +159,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         widgets.stackedWidget.setCurrentWidget(widgets.home)
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
+    def add_image_to_label(self, image_path, label, width, height):
+        pixmap = QPixmap(image_path)
+        pixmap = pixmap.scaled(width, height, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+        label.setPixmap(pixmap)
+        label.setAlignment(Qt.AlignCenter)
+
     def setup_images(self):
         bh = 60  #Tamanho das imagens dos botoes
         #Adiciona imagens (logo e botoes)
@@ -166,14 +172,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.add_image_to_label("images/images/camera.png", self.ui.img_calibrate, bh, bh)
         self.add_image_to_label("images/images/live.png", self.ui.img_visualize, bh, bh)
         self.add_image_to_label("images/images/instructions.png", self.ui.img_instructions, bh, bh)
-
-    def add_image_to_label(self, image_path, label, width, height):
-        #Adiciona uma imagem a um QLabel, redimensionando-a para o tamanho especificado
-        pixmap = QPixmap(image_path)
-        pixmap = pixmap.scaled(width, height, Qt.KeepAspectRatio)
-        label.setPixmap(pixmap)
-        label.setAlignment(Qt.AlignCenter)
-
 
     def show_cameras_page(self):
         widgets.stackedWidget.setCurrentWidget(widgets.cameras)  #Muda para a pagina das cameras

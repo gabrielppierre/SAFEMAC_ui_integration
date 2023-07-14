@@ -40,13 +40,20 @@ class CameraWindow(QMainWindow):
             self.camera_label.setPixmap(pixmap)
 
 class DetectorFactory:
+    def __init__(self):
+        self.detectors = {"Darknet Dummy": Darknet_dummy, "Pedestrian": Pedestrian}
+
     def create_detector(self, detector_type, files):
-        if detector_type == "Darknet Dummy":
-            return Darknet_dummy(*files)
-        elif detector_type == "Pedestrian":
-            return Pedestrian(*files)
-        else:
+        if len(files) != 3: 
+            print(f"Número incorreto de arquivos selecionados para {detector_type}. Por favor, selecione novamente.")
+            return None
+
+        detector_class = self.detectors.get(detector_type)
+        if detector_class is None:
             raise ValueError(f"Invalid detector type: {detector_type}")
+
+        return detector_class(*files)
+
 
 class CameraManager:
     def __init__(self, cameras, frame):
@@ -62,26 +69,17 @@ class CameraManager:
         self.maximized_camera = None
         self.frame = frame
         self.camera_windows = [None for _ in self.cameras]
-        self.modelcfg = "yolo-pose.cfg"
-        self.weightfile = "PATH_TO_MODEL_WEIGHTS"#nao consegui encontrar o arquivo de pesos
+        #self.modelcfg = "yolo-pose.cfg"
+        #self.weightfile = "PATH_TO_MODEL_WEIGHTS"
         #self.target_shape = (680, 680)  #tamanho teste pra redimensionar as imagens
         self.current_camera_index = 0
         self.model = None
         self.detector_factory = DetectorFactory()
         self.mesh_enabled = False
+        self.points_history = [[] for _ in self.cameras]
     
     def toggle_mesh(self):
         self.mesh_enabled = not self.mesh_enabled
-
-    def detect(self, frame):
-        if self.model is not None:
-            # Realiza a detecção se self.model não for None
-            corners2D = self.model.detect(frame)
-            # Resto do seu código...
-        else:
-            print("Modelo não inicializado.")
-            return None
-
 
     def print_points(self, img, points):
         if points is not None:
@@ -101,47 +99,51 @@ class CameraManager:
     #def print_points(img, points):
         #desenha um pequeno circulo para cada ponto
         #for point in points:
-        #    img = cv2.circle(img, point, radius=3, color=(0, 255, 0), thickness=-1)
+        #   img = cv2.circle(img, point, radius=3, color=(0, 255, 0), thickness=-1)
         #return img 
 
     def select_files(self):
-        # Pergunta ao usuário para qual função os arquivos devem ser selecionados
-        file_type, _ = QInputDialog.getItem(None, "Selecione o tipo de arquivo", "Para qual função você deseja adicionar os arquivos?", ["Darknet Dummy", "Pedestrian"], 0, False)
+        #pergunta ao usuario para qual funçao os arquivos devem ser selecionados
+        file_type, _ = QInputDialog.getItem(None, "Selecione o tipo de arquivo", "Para qual funçao você deseja adicionar os arquivos?", ["Darknet Dummy", "Pedestrian"], 0, False)
         
-        # Abre diálogos de seleção de arquivo de acordo com a função escolhida
+        #abre dialogos de seleçao de arquivo de acordo com a funçao escolhida
         files = []
         if file_type == "Darknet Dummy":
             files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_gt.json", "", "JSON Files (*.json)")[0])
             files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_camera.json", "", "JSON Files (*.json)")[0])
             files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo obj.ply", "", "PLY Files (*.ply)")[0])
-        else:  # file_type == "Pedestrian"
-            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo gt-pedestrian.txt", "", "TXT Files (*.txt)")[0])
-        
-        # Verifica se todos os arquivos foram selecionados
+        else:  #file_type == "Pedestrian"
+            files.append(QFileDialog.getOpenFileName(None, "Selecione a lista de pontos 3d a serem projetados", "", "TXT Files (*.txt)")[0])
+            files.append(QFileDialog.getOpenFileName(None, "Selecione o ext", "", "XML Files (*.xml)")[0])
+            files.append(QFileDialog.getOpenFileName(None, "Selecione o intr", "", "XML Files (*.xml)")[0])
+
+
+        #verifica se todos os arquivos foram selecionados
         if all(files):
             self.model = self.detector_factory.create_detector(file_type, files)
             return True
 
-        # Se não todos os arquivos necessários foram selecionados, pergunta ao usuário se deseja cancelar
-        reply = QMessageBox.warning(None, "Aviso", "Arquivos necessários não selecionados. Cancelar?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        #pergunta ao usuario se deseja cancelar
+        reply = QMessageBox.warning(None, "Aviso", "Arquivos necessarios nao selecionados. Cancelar?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             return False
         else:
             return self.select_files()
 
     def add_camera_clicked(self):
-        user_wants_to_select_files = QMessageBox.question(None, "Aviso", "Deseja selecionar arquivos específicos para a câmera?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No) == QMessageBox.Yes
+        user_wants_to_select_files = QMessageBox.question(None, "Aviso", "Deseja selecionar arquivos especificos para a camera?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No) == QMessageBox.Yes
         if user_wants_to_select_files and not self.select_files():
             return
 
         while True:
             cap = cv2.VideoCapture(self.current_camera_index)
+            time.sleep(1)  #adiciona um atraso para dar tempo pra camera inicializar
             if cap.isOpened():
                 break
             cap.release()
             self.current_camera_index += 1
-            if self.current_camera_index > 10:  # limitando a busca até o índice 10 para evitar um loop infinito
-                print("Nenhuma câmera disponível encontrada.")
+            if self.current_camera_index > 10:  #limitando a busca até o indice 10 para evitar um loop infinito
+                print("Nenhuma camera disponivel encontrada.")
                 return
 
         for i in range(len(self.caps)):
@@ -151,15 +153,15 @@ class CameraManager:
                 self.timers[i].start(1)
                 break
 
-        self.current_camera_index += 1 # Incrementa o índice da câmera após adicionar uma.
+        self.current_camera_index += 1 #incrementa o indice da camera apos adicionar uma.
 
 
     def add_recordings(self):
-        user_wants_to_select_files = QMessageBox.question(None, "Aviso", "Deseja selecionar arquivos adicionais para o vídeo?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No) == QMessageBox.Yes
+        user_wants_to_select_files = QMessageBox.question(None, "Aviso", "Deseja selecionar arquivos adicionais para o video?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No) == QMessageBox.Yes
         if user_wants_to_select_files and not self.select_files():
             return
 
-        # Abre uma caixa de diálogo para selecionar arquivos de vídeo
+        #Abre uma caixa de dialogo para selecionar arquivos de video
         file_dialog = QFileDialog()
         file_dialog.setFileMode(QFileDialog.ExistingFiles)
         video_paths, _ = file_dialog.getOpenFileNames(None, "Select Videos", ".", "Video Files (*.mp4 *.flv *.ts *.3gp *.mov *.avi *.wmv *.png)")
@@ -212,62 +214,68 @@ class CameraManager:
             if self.caps[i] is not None:
                 ret, frame = self.caps[i].read()
                 if ret:
-                    frame = cv2.flip(frame, 1) #espelha o frame horizontalmente
-                    #detecta pontos no frame
-                    points = self.detect(frame)
-                    # Desenha círculos em torno dos pontos
-                    if self.mesh_enabled:
-                        frame = self.print_points(frame, points)
+                    frame = cv2.flip(frame, 1)  #espelha
+
+                    #Realiza a detecçao se self.model nao for None
+                    if self.model is not None:
+                        frame = self.model.detect(frame)
+                    else:
+                        print("Modelo nao inicializado.")
+                        return None
+
                     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                    
                     if self.recording and self.recorders[i] is not None:
-                        # Converte o frame de volta para BGR, pois o OpenCV espera que o frame esteja em BGR
+                        #Converte o frame de volta para BGR, pois o OpenCV espera que o frame esteja em BGR
                         self.recorders[i].write(cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
-                    # Converte o frame para QImage
+                    
+                    #Converte o frame para QImage
                     img = QImage(frame, frame.shape[1], frame.shape[0], QImage.Format_RGB888)
                     pixmap = QPixmap.fromImage(img)
-                    # Redimensiona a QPixmap para caber na QLabel
+                    #Redimensiona a QPixmap para caber na QLabel
                     pixmap = pixmap.scaled(self.cameras[i].width(), self.cameras[i].height(), Qt.IgnoreAspectRatio)
                     self.cameras[i].setPixmap(pixmap)
                 else:
                     self.timers[i].stop()
                     if self.recording and self.recorders[i] is not None:
-                        # Libera o gravador de vídeo se estiver gravando
+                        #Libera o gravador de video se estiver gravando
                         self.recorders[i].release()
                         self.recorders[i] = None
-                    # Libera a captura de vídeo
+                    #Libera a captura de video
                     self.caps[i].release()
                     self.caps[i] = None
 
 
+
     def stop_visu(self):
-        # Parar todas as câmeras
+        #Parar todas as cameras
         for i in range(len(self.caps)):
             if self.caps[i] is not None:
                 self.timers[i].stop()
                 self.caps[i].release()
                 self.caps[i] = None
 
-        # Parar todas as gravações
+        #Parar todas as gravaçoes
         for recorder in self.recorders:
             if recorder is not None:
                 recorder.release()
 
-        # Limpar as janelas de visualização de câmera
+        #Limpar as janelas de visualizaçao de camera
         for window in self.camera_windows:
             if window is not None:
                 window.close()
         self.camera_windows = [None for _ in self.cameras]
 
-        # Limpar a lista de capturas de vídeo e gravadores
+        #Limpar a lista de capturas de video e gravadores
         self.caps = [None for _ in self.cameras]
         self.recorders = [None for _ in self.cameras]
 
-        # Reiniciar a lista de índices de câmera
+        #Reiniciar a lista de indices de camera
         self.camera_indices = []
 
-        # Reiniciar o índice da câmera atual
+        #Reiniciar o indice da camera atual
         self.current_camera_index = 0
-        if self.model is not None: # Adiciona uma verificação para self.model
+        if self.model is not None: #Adiciona uma verificaçao para self.model
             self.model.reset_parameters()
 
         for camera in self.cameras:
@@ -276,7 +284,7 @@ class CameraManager:
     
     def maximize_camera(self, index):
         if self.caps[index] is None:
-            print(f"Nenhuma câmera ativa ou vídeo no índice {index}")
+            print(f"Nenhuma camera ativa ou video no indice {index}")
             return
 
         if self.maximized_camera == index:
