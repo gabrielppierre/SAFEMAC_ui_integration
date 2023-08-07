@@ -5,13 +5,11 @@ from datetime import datetime
 import cv2
 import numpy as np
 import os
-from . single6dofPose.darknet import Darknet
-from . single6dofPose.utils import get_region_boxes
 import torch
 from PIL import Image
 from torch.autograd import Variable
-from . detect_darknet import Darknet_dummy
 from . detect_pedestrian import Pedestrian
+from . detect_tiny_yolo import Tiny_YOLO
 import time
 
 class CameraWindow(QMainWindow):
@@ -41,7 +39,7 @@ class CameraWindow(QMainWindow):
 
 class DetectorFactory:
     def __init__(self):
-        self.detectors = {"Darknet Dummy": Darknet_dummy, "Pedestrian": Pedestrian}
+        self.detectors = {"Pedestrian": Pedestrian, "Darknet Tiny YOLO": Tiny_YOLO}
 
     def create_detector(self, detector_type, files):
         if len(files) != 3: 
@@ -101,37 +99,51 @@ class CameraManager:
         #for point in points:
         #   img = cv2.circle(img, point, radius=3, color=(0, 255, 0), thickness=-1)
         #return img 
+    def custom_warning(self, title, message):
+        message_box = QMessageBox()
+        message_box.setWindowTitle(title)
+        message_box.setText(message)
+        message_box.setIcon(QMessageBox.Warning)
+        yes_button = message_box.addButton("Sim", QMessageBox.YesRole)
+        no_button = message_box.addButton("Não", QMessageBox.NoRole)
+        message_box.exec_()
+        if message_box.clickedButton() == yes_button:
+            return True
+        elif message_box.clickedButton() == no_button:
+            return False
+
 
     def select_files(self):
-        #pergunta ao usuario para qual funçao os arquivos devem ser selecionados
-        file_type, _ = QInputDialog.getItem(None, "Selecione o tipo de arquivo", "Para qual funçao você deseja adicionar os arquivos?", ["Darknet Dummy", "Pedestrian"], 0, False)
+        file_type, _ = QInputDialog.getItem(None, "Selecione o tipo de arquivo", "Para qual funçao você deseja adicionar os arquivos?", ["Darknet Tiny YOLO", "Pedestrian"], 0, False)
         
-        #abre dialogos de seleçao de arquivo de acordo com a funçao escolhida
         files = []
-        if file_type == "Darknet Dummy":
-            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_gt.json", "", "JSON Files (*.json)")[0])
-            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo scene_camera.json", "", "JSON Files (*.json)")[0])
-            files.append(QFileDialog.getOpenFileName(None, "Selecione o arquivo obj.ply", "", "PLY Files (*.ply)")[0])
-        else:  #file_type == "Pedestrian"
+        if file_type == "Pedestrian":
             files.append(QFileDialog.getOpenFileName(None, "Selecione a lista de pontos 3d a serem projetados", "", "TXT Files (*.txt)")[0])
+            if not files[-1]:
+                return self.show_warning()
             files.append(QFileDialog.getOpenFileName(None, "Selecione o ext", "", "XML Files (*.xml)")[0])
+            if not files[-1]:
+                return self.show_warning()
             files.append(QFileDialog.getOpenFileName(None, "Selecione o intr", "", "XML Files (*.xml)")[0])
-
-
-        #verifica se todos os arquivos foram selecionados
-        if all(files):
-            self.model = self.detector_factory.create_detector(file_type, files)
+            if not files[-1]:
+                return self.show_warning()
+        elif file_type == "Darknet Tiny YOLO":
+            self.model = self.detector_factory.create_detector(file_type, [])
             return True
 
-        #pergunta ao usuario se deseja cancelar
-        reply = QMessageBox.warning(None, "Aviso", "Arquivos necessarios nao selecionados. Cancelar?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-        if reply == QMessageBox.Yes:
+        self.model = self.detector_factory.create_detector(file_type, files)
+        return True
+            
+
+    def show_warning(self):
+        reply = self.custom_warning("Aviso", "Arquivos necessários não selecionados. Cancelar?")
+        if not reply:
             return False
         else:
             return self.select_files()
 
     def add_camera_clicked(self):
-        user_wants_to_select_files = QMessageBox.question(None, "Aviso", "Deseja selecionar arquivos especificos para a camera?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No) == QMessageBox.Yes
+        user_wants_to_select_files = self.custom_warning("Aviso", "Deseja selecionar arquivos específicos para a câmera?")
         if user_wants_to_select_files and not self.select_files():
             return
 
@@ -157,14 +169,14 @@ class CameraManager:
 
 
     def add_recordings(self):
-        user_wants_to_select_files = QMessageBox.question(None, "Aviso", "Deseja selecionar arquivos adicionais para o video?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No) == QMessageBox.Yes
+        user_wants_to_select_files = self.custom_warning("Aviso", "Deseja selecionar arquivos adicionais para o vídeo?")
         if user_wants_to_select_files and not self.select_files():
             return
 
         #Abre uma caixa de dialogo para selecionar arquivos de video
         file_dialog = QFileDialog()
         file_dialog.setFileMode(QFileDialog.ExistingFiles)
-        video_paths, _ = file_dialog.getOpenFileNames(None, "Select Videos", ".", "Video Files (*.mp4 *.flv *.ts *.3gp *.mov *.avi *.wmv *.png)")
+        video_paths, _ = file_dialog.getOpenFileNames(None, "Selecione o vídeo", ".", "Video Files (*.mp4 *.flv *.ts *.3gp *.mov *.avi *.wmv *.png)")
         self.video_paths.extend(video_paths)
 
 
@@ -216,32 +228,32 @@ class CameraManager:
                 if ret:
                     frame = cv2.flip(frame, 1)  #espelha
 
-                    #Realiza a detecçao se self.model nao for None
+                    # Realiza a detecçao se self.model nao for None
                     if self.model is not None:
-                        frame = self.model.detect(frame)
-                    else:
-                        print("Modelo nao inicializado.")
-                        return None
+                        try:
+                            frame = self.model.detect(frame)
+                        except Exception as e:
+                            print(f"Erro na detecção do modelo: {str(e)}")
 
                     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                     
                     if self.recording and self.recorders[i] is not None:
-                        #Converte o frame de volta para BGR, pois o OpenCV espera que o frame esteja em BGR
+                        # Converte o frame de volta para BGR, pois o OpenCV espera que o frame esteja em BGR
                         self.recorders[i].write(cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
                     
-                    #Converte o frame para QImage
+                    # Converte o frame para QImage
                     img = QImage(frame, frame.shape[1], frame.shape[0], QImage.Format_RGB888)
                     pixmap = QPixmap.fromImage(img)
-                    #Redimensiona a QPixmap para caber na QLabel
+                    # Redimensiona a QPixmap para caber na QLabel
                     pixmap = pixmap.scaled(self.cameras[i].width(), self.cameras[i].height(), Qt.IgnoreAspectRatio)
                     self.cameras[i].setPixmap(pixmap)
                 else:
                     self.timers[i].stop()
                     if self.recording and self.recorders[i] is not None:
-                        #Libera o gravador de video se estiver gravando
+                        # Libera o gravador de video se estiver gravando
                         self.recorders[i].release()
                         self.recorders[i] = None
-                    #Libera a captura de video
+                    # Libera a captura de video
                     self.caps[i].release()
                     self.caps[i] = None
 
@@ -296,7 +308,7 @@ class CameraManager:
                 if window is not None:
                     window.close()
                     self.camera_windows[i] = None
-            self.camera_windows[index] = CameraWindow(self.caps[index], self.detect, self.print_points)
+            self.camera_windows[index] = CameraWindow(self.caps[index], self.model.detect, self.print_points)
             self.maximized_camera = index
 
     
